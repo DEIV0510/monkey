@@ -1,0 +1,58 @@
+{
+  "grip-rojo": {
+    "width": 577,
+    "height": 657
+  },
+  "grip-verde": {
+    "width": 355,
+    "height": 527
+  },
+  "grip-lavanda": {
+    "width": 361,
+    "height": 385
+  },
+  "grip-amarillo": {
+    "width": 717,
+    "height": 765
+  },
+  "grip-rosa": {
+    "width": 570,
+    "height": 757
+  },
+  "grip-morado": {
+    "width": 357,
+    "height": 297
+  },
+  "grip-negro-cyan": {
+    "width": 360,
+    "height": 297
+  },
+  "grip-celeste": {
+    "width": 360,
+    "height": 300
+  },
+  "grip-construction": {
+    "width": 616,
+    "height": 762
+  },
+  "backpack-hero": {
+    "width": 430,
+    "height": 765
+  },
+  "backpack-infografia-1": {
+    "width": 617,
+    "height": 705
+  },
+  "backpack-infografia-2": {
+    "width": 580,
+    "height": 714
+  },
+  "waistbag-infografia": {
+    "width": 610,
+    "height": 713
+  },
+  "rope-infografia": {
+    "width": 617,
+    "height": 760
+  }
+}
