@@ -1,0 +1,47 @@
+<section id="nosotros" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-about{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="mg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="mg-title">{{ section.settings.title | newline_to_br }}</h2>
+        {%- if section.settings.text != blank -%}<div class="mg-lead">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <div class="mg-actions">
+            <a
+              href="{{ section.settings.button_link | default: settings.mg_instagram_url }}"
+              class="button button--secondary"
+              {% unless section.settings.button_link != blank %}target="_blank" rel="noopener"{% endunless %}
+            >
+              {{- section.settings.button_label -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="mg-about__figure">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', sizes: '280px' }}
+        {%- else -%}
+          <img src="{{ 'mg-monkey-big.png' | asset_url }}" alt="" width="420" height="420" loading="lazy">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Nosotros",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nuestra historia" },
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Hecho en Colombia.\nListo para el mundo." },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Monkey Grip crea indumentaria premium para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Conoce nuestra historia" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón (vacío = Instagram)" },
+    { "type": "image_picker", "id": "image", "label": "Imagen (vacío = mono de la marca)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "MG · Nosotros" }]
+}
+{% endschema %}

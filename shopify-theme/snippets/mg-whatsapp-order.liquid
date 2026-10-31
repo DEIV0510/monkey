@@ -1,0 +1,39 @@
+{% comment %}
+  Botón de pedido por WhatsApp para productos sin precio cargado.
+  El mensaje incluye el producto y la variante elegida; se actualiza al cambiar de variante.
+
+  Accepts:
+  - product: {Object}
+  - section_id: {String}
+{% endcomment %}
+{%- liquid
+  assign mg_variant = product.selected_or_first_available_variant
+  assign mg_base = 'Hola Monkey Grip, quiero pedir: ' | append: product.title
+  assign mg_message = mg_base
+  unless product.has_only_default_variant
+    assign mg_message = mg_message | append: ' (' | append: mg_variant.title | append: ')'
+  endunless
+-%}
+<a
+  id="MgWhatsAppOrder-{{ section_id }}"
+  class="button button--full-width button--primary mg-wa-order"
+  href="https://wa.me/{{ settings.mg_whatsapp_number }}?text={{ mg_message | url_encode }}"
+  target="_blank"
+  rel="noopener"
+  data-base="{{ mg_base | escape }}"
+  data-number="{{ settings.mg_whatsapp_number }}"
+>
+  {% render 'mg-icon-whatsapp' %}
+  <span>Pedir por WhatsApp</span>
+</a>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+    subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+      var link = document.getElementById('MgWhatsAppOrder-{{ section_id }}');
+      if (!link || !event.data || event.data.sectionId !== '{{ section_id }}' || !event.data.variant) return;
+      var message = link.dataset.base + ' (' + event.data.variant.title + ')';
+      link.href = 'https://wa.me/' + link.dataset.number + '?text=' + encodeURIComponent(message);
+    });
+  });
+</script>

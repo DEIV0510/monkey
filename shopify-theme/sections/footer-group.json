@@ -1,0 +1,53 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "mg-brand": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "mg-tienda": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Tienda",
+            "menu": "main-menu"
+          }
+        },
+        "mg-contacto": {
+          "type": "text",
+          "settings": {
+            "heading": "Contacto",
+            "subtext": "<p>Calle 18A Sur #29C-55<br>Bogotá, Colombia</p><p><a href=\"https://instagram.com/monkeygripco\">@monkeygripco</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "mg-brand",
+        "mg-tienda",
+        "mg-contacto"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

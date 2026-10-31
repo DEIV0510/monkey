@@ -1,0 +1,11 @@
+{%- if settings.mg_whatsapp_float and settings.mg_whatsapp_number != blank -%}
+  <a
+    class="mg-wa-float"
+    href="https://wa.me/{{ settings.mg_whatsapp_number }}?text={{ settings.mg_whatsapp_message | url_encode }}"
+    target="_blank"
+    rel="noopener"
+    aria-label="Escríbenos por WhatsApp"
+  >
+    {% render 'mg-icon-whatsapp' %}
+  </a>
+{%- endif -%}

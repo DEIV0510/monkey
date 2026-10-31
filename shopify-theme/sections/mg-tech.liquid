@@ -1,0 +1,75 @@
+{%- liquid
+  assign tech_image = section.settings.image
+  if tech_image == blank and section.settings.product != blank
+    assign idx = section.settings.image_index | minus: 1
+    assign tech_image = section.settings.product.images[idx] | default: section.settings.product.featured_image
+  endif
+-%}
+<section class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-head{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="mg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="mg-title">{{ section.settings.title | newline_to_br }}</h2>
+    </div>
+
+    <div class="mg-tech">
+      <div>
+        {%- for block in section.blocks -%}
+          <div
+            class="mg-tech__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {{ block.shopify_attributes }}
+            {% if settings.animations_reveal_on_scroll %}data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}
+          >
+            <span class="mg-tech__num">{{ forloop.index | prepend: '0' }}</span>
+            <div>
+              <h3>{{ block.settings.title }}</h3>
+              {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if tech_image != blank -%}
+        <div class="mg-media">
+          {{
+            tech_image
+            | image_url: width: 1200
+            | image_tag:
+              loading: 'lazy',
+              widths: '500, 800, 1200',
+              sizes: '(min-width: 990px) 560px, 92vw',
+              alt: tech_image.alt
+          }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Beneficios numerados",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Ingeniería del agarre" },
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Diseñado para\nresistir." },
+    { "type": "header", "content": "Imagen" },
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "range", "id": "image_index", "label": "Foto del producto (posición)", "min": 1, "max": 12, "step": 1, "default": 1 },
+    { "type": "image_picker", "id": "image", "label": "Imagen propia (reemplaza la del producto)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Beneficio",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "text", "id": "text", "label": "Descripción (1 línea)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "MG · Beneficios numerados" }]
+}
+{% endschema %}

@@ -1,0 +1,100 @@
+{%- liquid
+  assign product = section.settings.product
+  assign main_image = section.settings.image
+  assign idx = section.settings.image_index | minus: 1
+  if main_image == blank and product != blank
+    assign main_image = product.images[idx] | default: product.featured_image
+  endif
+  assign pills = section.settings.colors | split: ','
+-%}
+<section {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}" {% endif %}class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-split{% if section.settings.reverse %} mg-split--reverse{% endif %}">
+      <div class="mg-split__media mg-media">
+        {%- if main_image != blank -%}
+          {{
+            main_image
+            | image_url: width: 1200
+            | image_tag:
+              loading: 'lazy',
+              widths: '500, 800, 1200',
+              sizes: '(min-width: 990px) 560px, 92vw',
+              alt: main_image.alt
+          }}
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="{% if settings.animations_reveal_on_scroll %}scroll-trigger animate--slide-in{% endif %}">
+        {%- if section.settings.eyebrow != blank -%}<p class="mg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="mg-title">{{ section.settings.title | newline_to_br }}</h2>
+        {%- if section.settings.text != blank -%}<p class="mg-lead">{{ section.settings.text }}</p>{%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="mg-check">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>{% render 'mg-icon-check' %}{{ block.settings.text }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.colors != blank -%}
+          <div class="mg-pills">
+            {%- for pill in pills -%}
+              {%- assign pair = pill | strip | split: ':' -%}
+              <span class="mg-pill"><i style="background: {{ pair[1] | strip | default: '#3a3a3a' }};"></i>{{ pair[0] | strip }}</span>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank and product != blank -%}
+          <div class="mg-actions">
+            <a href="{{ product.url }}" class="button button--primary">{{ section.settings.button_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.show_gallery and product != blank and product.images.size > 1 -%}
+      <div class="mg-gallery">
+        {%- for image in product.images -%}
+          {%- if forloop.index0 == idx -%}{%- continue -%}{%- endif -%}
+          <div class="mg-media">
+            {{
+              image
+              | image_url: width: 1000
+              | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 750px) 50vw, 50vw', alt: image.alt
+            }}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Producto destacado",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "range", "id": "image_index", "label": "Foto principal (posición)", "min": 1, "max": 12, "step": 1, "default": 1 },
+    { "type": "image_picker", "id": "image", "label": "Imagen propia (reemplaza la del producto)" },
+    { "type": "checkbox", "id": "show_gallery", "label": "Mostrar el resto de fotos debajo", "default": false },
+    { "type": "checkbox", "id": "reverse", "label": "Imagen a la derecha", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo" },
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Título" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "colors", "label": "Colores (Nombre:#hex, separados por coma)" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Ver producto" },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Beneficio", "settings": [{ "type": "text", "id": "text", "label": "Texto" }] }
+  ],
+  "presets": [{ "name": "MG · Producto destacado" }]
+}
+{% endschema %}
