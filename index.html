@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Monkey Grip — Equipamiento Premium para CrossFit</title>
-<meta name="description" content="Monkey Grip: indumentaria premium para CrossFit hecha en Colombia. Grips, UltraRope, backpacks y riñoneras diseñados para alto rendimiento.">
+<title>Monkey Grip — Grips sin magnesio, Wristbands y Travel Bag</title>
+<meta name="description" content="Monkey Grip: Grips con adherencia sin magnesio, Monkey Wristbands y Monkey Grip Travel Bag. Equipamiento para CrossFit diseñado y fabricado en Colombia.">
+<meta name="theme-color" content="#050505">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo/favicon-192.png">
@@ -12,438 +13,262 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="preload" as="image" href="assets/img/grips/grip-amarillo.webp">
-<link rel="preload" as="image" href="assets/img/logo/logo-full-darkbg.webp">
-
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/grips/grips-neazaz.webp">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ============== LOADER ============== -->
 <div id="loader">
-  <img class="loader-logo" src="assets/img/logo/logo-full-darkbg.webp" alt="Monkey Grip">
+  <img class="loader-logo" src="assets/img/logo/logo-full-darkbg.webp" alt="Monkey Grip" width="210" height="128">
   <div class="loader-bar"></div>
 </div>
 
-<!-- ============== NAVBAR ============== -->
+<div class="topbar">Hecho en Colombia para los CrossFitters del mundo</div>
+
 <header id="navbar">
   <div class="container nav-inner">
-    <a href="#inicio" class="nav-logo">
-      <img src="assets/img/logo/logo-icon-yellow.webp" alt="" style="height:100%;width:auto;">
-      <img src="assets/img/logo/logo-wordmark-white.webp" alt="Monkey Grip" style="height:62%;width:auto;">
+    <a href="index.html" class="nav-logo" aria-label="Monkey Grip, inicio">
+      <img class="icon" src="assets/img/logo/logo-icon-yellow.webp" alt="" width="38" height="38">
+      <img class="word" src="assets/img/logo/logo-wordmark-white.webp" alt="Monkey Grip" width="74" height="23">
     </a>
-
-    <nav class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#grips">Grips</a>
-      <a href="#ultrarope">UltraRope</a>
-      <a href="#backpack">Backpack</a>
-      <a href="#riñoneras">Riñoneras</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="grips.html">Grips</a>
+      <a href="wristbands.html">Wristbands</a>
+      <a href="travel-bag.html">Travel Bag</a>
+      <a href="#mas">Más equipamiento</a>
       <a href="#nosotros">Nosotros</a>
     </nav>
-
     <div class="nav-actions">
-      <button class="icon-btn" id="search-open" aria-label="Buscar">
+      <button class="icon-btn" type="button" data-search-open aria-label="Buscar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
-      <button class="icon-btn" id="cart-open" aria-label="Carrito">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <button class="icon-btn" type="button" data-cart-open aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" data-cart-count hidden>0</span>
       </button>
-      <a href="#" class="btn btn-primary wa-cta" id="nav-buy">Comprar ahora</a>
-      <button class="burger" id="burger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="grips.html" class="btn btn-primary nav-buy">Comprar Grips</a>
+      <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- ============== MOBILE MENU ============== -->
 <div id="mobile-menu">
-  <nav class="mm-links">
-    <a href="#inicio"><span>01</span>Inicio</a>
-    <a href="#grips"><span>02</span>Grips</a>
-    <a href="#ultrarope"><span>03</span>UltraRope</a>
-    <a href="#backpack"><span>04</span>Backpack</a>
-    <a href="#riñoneras"><span>05</span>Riñoneras</a>
-    <a href="#nosotros"><span>06</span>Nosotros</a>
+  <nav class="mm-links" aria-label="Menú móvil">
+    <a href="grips.html">Grips <span>$160.000</span></a>
+    <a href="wristbands.html">Wristbands <span>$40.000</span></a>
+    <a href="travel-bag.html">Travel Bag <span>$460.000</span></a>
+    <a href="#mas">Más equipamiento</a>
+    <a href="#nosotros">Nosotros</a>
   </nav>
   <div class="mm-foot">
-    <a href="#" class="btn btn-primary btn-block wa-cta">Comprar ahora</a>
-    <span class="mm-social">@monkeygripco · Bogotá, Colombia</span>
+    <a href="#" class="btn btn-primary btn-block" data-wa>Escribir por WhatsApp</a>
+    <span class="small">@monkeygripco · Bogotá, Colombia</span>
   </div>
-</div>
-
-<!-- ============== SEARCH OVERLAY ============== -->
-<div id="search-overlay" style="position:fixed;inset:0;z-index:950;background:rgba(5,5,5,.97);display:none;flex-direction:column;padding:100px 24px 40px;">
-  <div class="container" style="max-width:720px;">
-    <div style="display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gray-700);padding-bottom:16px;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;color:var(--yellow);flex-shrink:0;"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="search-input" type="text" placeholder="Buscar grips, backpack, riñoneras…" autocomplete="off"
-        style="flex:1;background:none;border:none;outline:none;color:#fff;font-family:var(--font-display);font-size:clamp(1.4rem,4vw,2.2rem);text-transform:uppercase;">
-      <button id="search-close" class="icon-btn" aria-label="Cerrar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <ul id="search-results" style="margin-top:24px;display:flex;flex-direction:column;"></ul>
-  </div>
-</div>
-
-<!-- ============== CART POPOVER ============== -->
-<div id="cart-popover" style="position:fixed;top:78px;right:20px;z-index:950;width:min(88vw,320px);background:var(--gray-900);border:1px solid var(--gray-700);border-radius:var(--radius-md);padding:22px;display:none;box-shadow:0 30px 60px rgba(0,0,0,.6);">
-  <p style="font-weight:800;text-transform:uppercase;font-size:.85rem;letter-spacing:.04em;">Carrito</p>
-  <p style="color:var(--gray-400);font-size:.85rem;margin-top:10px;">El carrito de compra en línea llega pronto. Por ahora, compra directo y a la medida por WhatsApp.</p>
-  <a href="#" class="btn btn-primary btn-block wa-cta" style="margin-top:16px;">Comprar por WhatsApp</a>
 </div>
 
 <main>
 
-  <!-- ============== HERO ============== -->
-  <section class="hero" id="inicio">
+  <section class="hero">
     <div class="container hero-grid">
       <div data-reveal>
-        <div class="hero-kicker"><span class="dot"></span> Performance Gear · CrossFit</div>
-        <h1 class="h-display hero-title">AGARRA MÁS.<br><span class="accent">RINDE MÁS.</span></h1>
-        <p class="hero-sub">Equipamiento premium diseñado para llevar tu rendimiento al siguiente nivel. Fabricado por colombianos para los CrossFitters del mundo.</p>
+        <p class="hero-kicker">Grips · Tecnología GRIPNEX™</p>
+        <h1 class="display hero-title">Adherencia extrema.<br><span class="accent">Sin magnesio.</span></h1>
+        <p class="hero-sub">Agarre en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas.</p>
+        <div class="hero-price"><strong>$160.000</strong><span>COP por par · envío aparte</span></div>
         <div class="hero-cta">
-          <a href="#" class="btn btn-primary btn-lg wa-cta">Comprar ahora</a>
-          <a href="#categorias" class="btn btn-outline btn-lg">Ver productos</a>
+          <a class="btn btn-primary" href="grips.html" data-hero-link>Comprar Grips</a>
+          <a class="btn btn-outline" href="#productos">Ver productos</a>
         </div>
-        <ul class="hero-trust">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño premium</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hecho en Colombia</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pensado para atletas</li>
-        </ul>
       </div>
-
-      <div class="hero-visual" data-reveal="fade">
-        <div class="glow"></div>
-        <div class="frame">
-          <img src="assets/img/grips/grip-amarillo.webp" alt="Monkey Grip amarillo, hand grip premium para CrossFit">
+      <div class="hero-media">
+        <div class="frame media-light">
+          <img id="hero-img" src="assets/img/grips/grips-neazaz.webp" alt="Grips Monkey Grip negro + azul celeste" width="1200" height="800" fetchpriority="high">
         </div>
-        <div class="tag">Grips Monkey<small>Caucho de alto rendimiento</small></div>
+        <div class="hero-colors">
+          <p>6 colores · <b id="hero-color">Negro + azul celeste</b></p>
+          <div class="swatches" data-color-picker="grips" data-target="#hero-img" data-label="#hero-color" data-links="[data-hero-link]" data-full="1"></div>
+        </div>
       </div>
     </div>
-    <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
   </section>
 
-  <!-- ============== CATEGORÍAS ============== -->
-  <section class="section" id="categorias">
+  <section class="trust">
+    <div class="container">
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>Hecho en Colombia</b> por Monkey Grip</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Proceso de fabricación propio <b>MG-FUSION™</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><span><b>Garantía comercial de 3 meses</b> en Grips</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="productos">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow">Catálogo</span>
-        <h2 class="h-display section-title">Equipamiento para<br>rendir al máximo</h2>
+        <h2 class="display section-title">Equipamiento para<br>rendir al máximo</h2>
+        <p class="section-lead">Precios por producto. El envío se cotiza y se paga aparte.</p>
       </div>
 
-      <div class="cat-grid" data-reveal-group>
-        <a class="cat-card" href="#grips">
-          <img src="assets/img/grips/grip-amarillo.webp" alt="Grips Monkey Grip">
-          <div class="cat-card-body">
-            <span class="cat-num">01</span>
-            <h3 class="cat-name">Grips</h3>
-            <p class="cat-short">Domina cada repetición</p>
-            <span class="cat-link">Ver colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      <div class="products-grid">
+        <article class="product-card" data-reveal>
+          <a class="product-card__media media-light" href="grips.html" data-card-grips>
+            <img id="card-grips" src="assets/img/grips/grips-neazaz-640.webp" alt="Grips Monkey Grip" width="640" height="427" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Grips</h3>
+            <p class="product-card__tag">Adherencia sin magnesio. Tallas S, M y L.</p>
+            <p class="product-card__price">$160.000 <small>COP por par</small></p>
+            <div class="product-card__foot">
+              <div class="swatches" data-color-picker="grips" data-size="sm" data-target="#card-grips" data-links="[data-card-grips]"></div>
+              <a class="btn btn-primary btn-block" href="grips.html" data-card-grips>Ver y comprar</a>
+            </div>
           </div>
-        </a>
-        <a class="cat-card" href="#ultrarope">
-          <img src="assets/img/rope/rope-infografia.webp" alt="UltraRope Monkey Grip" style="object-position:15% center;">
-          <div class="cat-card-body">
-            <span class="cat-num">02</span>
-            <h3 class="cat-name">UltraRope</h3>
-            <p class="cat-short">Velocidad sin fricción</p>
-            <span class="cat-link">Ver colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </article>
+
+        <article class="product-card" data-reveal>
+          <a class="product-card__media media-light" href="wristbands.html" data-card-wb>
+            <img id="card-wb" src="assets/img/wristbands/wb-blfu-480.webp" alt="Monkey Wristbands" width="480" height="327" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Monkey Wristbands</h3>
+            <p class="product-card__tag">Control de sudor. Par, talla única.</p>
+            <p class="product-card__price">$40.000 <small>COP por par</small></p>
+            <div class="product-card__foot">
+              <div class="swatches" data-color-picker="wristbands" data-size="sm" data-target="#card-wb" data-links="[data-card-wb]"></div>
+              <a class="btn btn-primary btn-block" href="wristbands.html" data-card-wb>Ver y comprar</a>
+            </div>
           </div>
-        </a>
-        <a class="cat-card" href="#backpack">
-          <img src="assets/img/backpack/backpack-hero.webp" alt="Monkey Backpack">
-          <div class="cat-card-body">
-            <span class="cat-num">03</span>
-            <h3 class="cat-name">Backpack</h3>
-            <p class="cat-short">Todo tu equipo, un lugar</p>
-            <span class="cat-link">Ver colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </article>
+
+        <article class="product-card" data-reveal>
+          <a class="product-card__media media-white" href="travel-bag.html">
+            <img src="assets/img/travel-bag/travel-bag-verde-560.webp" alt="Monkey Grip Travel Bag verde" width="560" height="657" loading="lazy">
+          </a>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Monkey Grip Travel Bag</h3>
+            <p class="product-card__tag">50 L base, hasta 60 L. Incluye 3 pods.</p>
+            <p class="product-card__price">$460.000 <small>COP + envío</small></p>
+            <div class="product-card__foot">
+              <p class="small">Verde · Gris · Negro · Morado</p>
+              <a class="btn btn-primary btn-block" href="travel-bag.html">Ver y comprar</a>
+            </div>
           </div>
-        </a>
-        <a class="cat-card" href="#riñoneras">
-          <img src="assets/img/waistbag/waistbag-infografia.webp" alt="Riñoneras Monkey Grip" style="object-position:15% center;">
-          <div class="cat-card-body">
-            <span class="cat-num">04</span>
-            <h3 class="cat-name">Riñoneras</h3>
-            <p class="cat-short">Rendimiento que va contigo</p>
-            <span class="cat-link">Ver colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-          </div>
-        </a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============== GRIPS DESTACADO ============== -->
-  <section class="section" id="grips">
-    <div class="container grip-showcase">
-      <div class="grip-stage" data-reveal="fade">
-        <div class="glow" id="grip-glow" style="background:#FFEC00;"></div>
-        <span class="stage-label">Color: <b id="grip-color-name">Amarillo</b></span>
-        <img id="grip-stage-img" src="assets/img/grips/grip-amarillo.webp" alt="Monkey Grip color amarillo">
-      </div>
-
+  <section class="section section--alt">
+    <div class="container band">
       <div data-reveal>
-        <span class="eyebrow grip-info-eyebrow">Producto insignia</span>
-        <h2 class="h-display grip-title">Tu agarre no<br>debería ser el<br>límite.</h2>
-        <p class="grip-desc">Hand grips fabricados en compuesto de caucho específicamente modificado para un alto rendimiento. Protección, comodidad y ajuste seguro en cada WOD.</p>
-
-        <div class="swatches" id="grip-swatches"></div>
-
-        <ul class="grip-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sistema multicapa de bloqueo</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doble neopreno de confort</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Herraje acerado electrosoldado</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Velcro 100% nylon</li>
+        <h2 class="display section-title">Cuatro tecnologías.<br><span class="accent">Un agarre.</span></h2>
+        <ul class="feature-list">
+          <li><b>GRIPNEX™</b><span>Adherencia sin magnesio en barras lisas, corrugadas, pintadas, lacadas, electrostáticas y oxidadas.</span></li>
+          <li><b>POLYGRIP™</b><span>Compuesto polimérico de base caucho: adherencia, flexibilidad, confort y durabilidad.</span></li>
+          <li><b>FORGEX™</b><span>Estructura de cinco capas internas con funciones diferenciadas.</span></li>
+          <li><b>MG-FUSION™</b><span>Proceso de fabricación propio, desarrollado desde cero por Monkey Grip.</span></li>
         </ul>
-
-        <a href="#" class="btn btn-primary btn-lg grip-cta wa-cta">Ver Grips</a>
+        <a class="btn btn-primary" href="grips.html">Ver ficha de Grips</a>
       </div>
+      <figure class="band__media figure-full" data-zoom data-reveal>
+        <img src="assets/img/grips/grips-infografia.webp" alt="Infografía oficial de Grips: tecnologías, colores, tallas y precio" width="1536" height="1024" loading="lazy">
+        <figcaption>Infografía oficial de Grips. Toca para ampliar.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ============== TECNOLOGÍA / BENEFICIOS ============== -->
-  <section class="section" style="background:var(--gray-900);">
+  <section class="section">
+    <div class="container band band--reverse">
+      <div data-reveal>
+        <p class="hero-kicker">Monkey Grip Travel Bag · Sistema MODEX™</p>
+        <h2 class="display section-title" style="margin-top:14px">Adapta. Organiza.<br><span class="accent">Expande.</span></h2>
+        <p class="section-lead">Una maleta para entrenar, viajar y acompañar tu día, con tres módulos para tus esenciales, tu equipo y tu carga.</p>
+        <div class="stat-row">
+          <div><strong>50 L</strong><span>Capacidad base</span></div>
+          <div><strong>60 L</strong><span>Expandida</span></div>
+          <div><strong>3 pods</strong><span>Incluidos</span></div>
+          <div><strong>6 meses</strong><span>Garantía</span></div>
+        </div>
+        <a class="btn btn-primary" href="travel-bag.html">Ver Travel Bag · $460.000</a>
+      </div>
+      <figure class="band__media figure-full" data-zoom data-reveal>
+        <img src="assets/img/travel-bag/modex-1.webp" alt="Composición publicitaria conceptual del sistema MODEX de la Monkey Grip Travel Bag" width="1024" height="1024" loading="lazy">
+        <figcaption>Composición conceptual del sistema MODEX™.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="mas">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow">Ingeniería del agarre</span>
-        <h2 class="h-display section-title">Diseñado para<br>resistir.</h2>
+        <h2 class="display section-title">Más equipamiento</h2>
+        <p class="section-lead">Consulta precio y disponibilidad por WhatsApp.</p>
       </div>
-
-      <div class="tech-wrap">
-        <div class="tech-list" data-reveal-group>
-          <div class="tech-item">
-            <span class="tech-num">01</span>
-            <div class="tech-body"><h3>Agarre seguro</h3><p>Sistema de bloqueo multicapa en ejes X, Y, Z y anti-torsión.</p></div>
+      <div class="extras-grid">
+        <article class="extra-card" data-reveal>
+          <img src="assets/img/waistbag/waistbag-infografia.webp" alt="Riñonera Slim Monkey Grip" width="160" height="160" loading="lazy">
+          <div>
+            <h3>Riñonera Slim</h3>
+            <p>Lona repelente al agua. Gris, verde y azul.</p>
+            <a class="link-arrow" href="#" data-wa="Hola Monkey Grip, quiero información sobre la Riñonera Slim.">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
-          <div class="tech-item">
-            <span class="tech-num">02</span>
-            <div class="tech-body"><h3>Máxima comodidad</h3><p>Doble capa de neopreno que evita talladuras durante el WOD.</p></div>
+        </article>
+        <article class="extra-card" data-reveal>
+          <img src="assets/img/rope/rope-infografia.webp" alt="UltraRope Monkey Grip" width="160" height="160" loading="lazy">
+          <div>
+            <h3>UltraRope</h3>
+            <p>Maniguetas 100% maquinadas. Azul, morado y rojo.</p>
+            <a class="link-arrow" href="#" data-wa="Hola Monkey Grip, quiero información sobre la UltraRope.">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
-          <div class="tech-item">
-            <span class="tech-num">03</span>
-            <div class="tech-body"><h3>Materiales resistentes</h3><p>Herraje acerado electrosoldado y velcro 100% nylon.</p></div>
-          </div>
-          <div class="tech-item">
-            <span class="tech-num">04</span>
-            <div class="tech-body"><h3>Alto rendimiento</h3><p>Compuesto de caucho modificado específicamente para atletas exigentes.</p></div>
-          </div>
-        </div>
-
-        <div class="tech-visual" data-reveal="fade">
-          <img src="assets/img/grips/grip-construction.webp" alt="Construcción multicapa del Monkey Grip">
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============== BACKPACK ============== -->
-  <section class="section" id="backpack">
-    <div class="container">
-      <div class="split" data-reveal>
-        <div class="split-media">
-          <img src="assets/img/backpack/backpack-hero.webp" alt="Monkey Backpack">
-        </div>
-        <div class="split-copy">
-          <span class="eyebrow">Equipamiento diario</span>
-          <h2 class="h-display section-title">Todo tu equipo.<br>Un solo lugar.</h2>
-          <p class="lead">Diseñada para acompañarte dentro y fuera del box.</p>
-          <ul class="split-feats">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Compartimento principal tipo baúl, 100% libre</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bolsillo lateral expandible, compatible con termos y shakers</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bolsillo de seguridad oculto para objetos de valor</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doble organización interna: cremallera + malla</li>
-          </ul>
-          <div class="split-cta">
-            <a href="#" class="btn btn-primary wa-cta">Ver Backpack</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="grip-feats" style="grid-template-columns:1fr 1fr;gap:16px;margin-top:56px;" data-reveal-group>
-        <div class="split-media" style="aspect-ratio:4/5;">
-          <img src="assets/img/backpack/backpack-infografia-1.webp" alt="Compartimentos de la Monkey Backpack" style="object-fit:contain;background:#000;">
-        </div>
-        <div class="split-media" style="aspect-ratio:4/5;">
-          <img src="assets/img/backpack/backpack-infografia-2.webp" alt="Organización interna de la Monkey Backpack" style="object-fit:contain;background:#000;">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== RIÑONERAS ============== -->
-  <section class="section" id="riñoneras" style="background:var(--gray-900);">
-    <div class="container">
-      <div class="split reverse" data-reveal>
-        <div class="split-media">
-          <img src="assets/img/waistbag/waistbag-infografia.webp" alt="Riñonera Slim Monkey Grip" style="object-fit:contain;background:#000;">
-        </div>
-        <div class="split-copy">
-          <span class="eyebrow">Lifestyle · Urbano</span>
-          <h2 class="h-display section-title">Rendimiento que<br>va contigo.</h2>
-          <p class="lead">Riñonera Slim en lona repelente al agua, pensada para tu día a día dentro y fuera del box.</p>
-          <ul class="split-feats">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bolsillo frontal y compartimento vertical de gran apertura</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bolsillos laterales para monedas o llaves</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Compartimento de seguridad resguardado en la parte trasera</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Lona 100% repelente al agua</li>
-          </ul>
-          <div class="color-pills">
-            <span class="color-pill"><span class="dot" style="background:#8a8f94;"></span>Gris</span>
-            <span class="color-pill"><span class="dot" style="background:#5c6b3f;"></span>Verde</span>
-            <span class="color-pill"><span class="dot" style="background:#3b4a5a;"></span>Azul</span>
-          </div>
-          <div class="split-cta">
-            <a href="#" class="btn btn-primary wa-cta">Ver Riñoneras</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== ULTRAROPE ============== -->
-  <section class="section" id="ultrarope">
-    <div class="container">
-      <div class="split" data-reveal>
-        <div class="split-media">
-          <img src="assets/img/rope/rope-infografia.webp" alt="UltraRope Monkey Grip" style="object-fit:contain;background:#000;">
-        </div>
-        <div class="split-copy">
-          <span class="eyebrow">Speed Rope</span>
-          <h2 class="h-display section-title">Velocidad que<br>no se detiene.</h2>
-          <p class="lead">Maniguetas 100% maquinadas para dobles unders sin fricción, WOD tras WOD.</p>
-          <ul class="split-feats">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Doble rodamiento flotante sin fricción</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Guaya acerada recubierta en PVC</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bujes de peso para alto volumen de repeticiones</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Incluye llave Bristol y repuestos</li>
-          </ul>
-          <div class="color-pills">
-            <span class="color-pill"><span class="dot" style="background:#2452c8;"></span>Azul</span>
-            <span class="color-pill"><span class="dot" style="background:#8a2be2;"></span>Morado</span>
-            <span class="color-pill"><span class="dot" style="background:#d6231e;"></span>Rojo</span>
-          </div>
-          <div class="split-cta">
-            <a href="#" class="btn btn-primary wa-cta">Ver UltraRope</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== POR QUÉ MONKEY GRIP ============== -->
-  <section class="section" style="background:var(--gray-900);">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Por qué Monkey Grip</span>
-        <h2 class="h-display section-title">Hecho para atletas<br>que exigen más.</h2>
-      </div>
-
-      <div class="why-grid" data-reveal-group>
-        <div class="why-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
-          <h3>Diseño premium</h3><p>Hecho para atletas exigentes.</p>
-        </div>
-        <div class="why-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <h3>Hecho en Colombia</h3><p>Diseñado y elaborado localmente.</p>
-        </div>
-        <div class="why-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <h3>Alto rendimiento</h3><p>Pensado para acompañar tus entrenamientos.</p>
-        </div>
-        <div class="why-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <h3>Comunidad Monkey</h3><p>Para quienes buscan superar sus límites.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== SOBRE LA MARCA ============== -->
   <section class="section" id="nosotros">
-    <div class="container">
-      <div class="about" data-reveal>
-        <div>
-          <span class="eyebrow">Nuestra historia</span>
-          <h2 class="h-display about-title">Hecho en Colombia.<br>Listo para el mundo.</h2>
-          <p>Monkey Grip crea indumentaria premium para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>
-          <a href="https://instagram.com/monkeygripco" target="_blank" rel="noopener" class="btn btn-outline">Conoce nuestra historia</a>
-        </div>
-        <div class="about-figure">
-          <img src="assets/img/logo/logo-icon-yellow.webp" alt="Monkey Grip">
-        </div>
+    <div class="container about" data-reveal>
+      <div>
+        <h2 class="display section-title">Hecho en Colombia.<br><span class="accent">Listo para el mundo.</span></h2>
+        <p class="section-lead">Monkey Grip diseña y fabrica equipamiento para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>
+        <a class="link-arrow" style="margin-top:22px" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener">Síguenos en @monkeygripco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
-    </div>
-  </section>
-
-  <!-- ============== INSTAGRAM ============== -->
-  <section class="section">
-    <div class="container">
-      <div class="insta-head" data-reveal>
-        <div>
-          <span class="eyebrow">Comunidad</span>
-          <h2 class="h-display section-title">Sigue el<br>movimiento.</h2>
-        </div>
-        <a href="https://instagram.com/monkeygripco" target="_blank" rel="noopener" class="btn btn-outline">@monkeygripco</a>
-      </div>
-
-      <div class="insta-grid" data-reveal-group>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/grips/grip-amarillo.webp" alt=""></a>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/backpack/backpack-hero.webp" alt=""></a>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/grips/grip-rosa.webp" alt=""></a>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/grips/grip-negro-cyan.webp" alt=""></a>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/grips/grip-morado.webp" alt=""></a>
-        <a class="insta-cell" href="https://instagram.com/monkeygripco" target="_blank" rel="noopener"><img src="assets/img/grips/grip-celeste.webp" alt=""></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== CTA FINAL ============== -->
-  <section class="section">
-    <div class="container">
-      <div class="final-cta" data-reveal>
-        <span class="eyebrow" style="justify-content:center;">Monkey Grip</span>
-        <h2 class="h-display">¿Listo para mejorar<br>tu rendimiento?</h2>
-        <p>Equipamiento premium hecho en Colombia, diseñado para atletas que no negocian su rendimiento.</p>
-        <a href="#" class="btn btn-primary btn-lg wa-cta">Comprar ahora</a>
-      </div>
+      <img src="assets/img/logo/logo-icon-yellow.webp" alt="" width="220" height="220" loading="lazy">
     </div>
   </section>
 
 </main>
 
-<!-- ============== FOOTER ============== -->
 <footer>
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img class="foot-logo" src="assets/img/logo/logo-wordmark-white.webp" alt="Monkey Grip">
-        <p>Indumentaria premium para CrossFit, diseñada y elaborada por colombianos para los CrossFitters del mundo.</p>
+        <a href="index.html" class="foot-logo" aria-label="Monkey Grip, inicio">
+          <img class="icon" src="assets/img/logo/logo-icon-yellow.webp" alt="" width="40" height="40">
+          <img class="word" src="assets/img/logo/logo-wordmark-white.webp" alt="Monkey Grip" width="77" height="24">
+        </a>
+        <p>Equipamiento para CrossFit diseñado y elaborado por colombianos para los CrossFitters del mundo.</p>
       </div>
       <div class="foot-col">
-        <h4>Categorías</h4>
-        <a href="#grips">Grips</a>
-        <a href="#ultrarope">UltraRope</a>
-        <a href="#backpack">Backpack</a>
-        <a href="#riñoneras">Riñoneras</a>
+        <h4>Tienda</h4>
+        <a href="grips.html">Grips</a>
+        <a href="wristbands.html">Monkey Wristbands</a>
+        <a href="travel-bag.html">Travel Bag</a>
+        <a href="#mas">Más equipamiento</a>
       </div>
       <div class="foot-col">
         <h4>Contacto</h4>
-        <p>Bogotá, Colombia</p>
-        <p>Calle 18A Sur #29C-55</p>
-        <a href="#" class="wa-cta">WhatsApp</a>
+        <p>Calle 18A Sur #29C-55<br>Bogotá, Colombia</p>
+        <a href="#" data-wa>WhatsApp</a>
+        <a href="https://instagram.com/monkeygripco" target="_blank" rel="noopener">@monkeygripco</a>
       </div>
       <div class="foot-col">
-        <h4>Síguenos</h4>
-        <a href="https://instagram.com/monkeygripco" target="_blank" rel="noopener">@monkeygripco</a>
+        <h4>Compras</h4>
+        <p>El envío no está incluido en los precios: se cotiza y se paga por separado.</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>© <span id="year"></span> Monkey Grip. Todos los derechos reservados.</p>
+      <p>© <span data-year></span> Monkey Grip. Todos los derechos reservados.</p>
       <div class="foot-legal">
         <a href="privacidad.html">Política de privacidad</a>
         <a href="terminos.html">Términos y condiciones</a>
@@ -452,20 +277,34 @@
   </div>
 </footer>
 
-<!-- ============== WHATSAPP FLOTANTE + STICKY MOBILE ============== -->
-<a href="#" id="wa-float" class="wa-cta" aria-label="Escríbenos por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.24h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.25-8.27 8.25zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.24-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.16 1.75 2.67 4.24 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+<div class="sticky-buy" data-home>
+  <div class="sticky-buy__info"><strong>Grips</strong><span>$160.000 COP por par</span></div>
+  <a class="btn btn-primary" href="grips.html">Comprar</a>
+</div>
+
+<a href="#" id="wa-float" data-wa aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.24h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.25-8.27 8.25zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.24-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.16 1.75 2.67 4.24 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
 </a>
 
-<div id="sticky-cta">
-  <a href="#" class="btn btn-outline wa-cta" style="flex:none;padding-inline:16px;">
-    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;color:#25D366;"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.24h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.25-8.27 8.25zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.24-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.16 1.75 2.67 4.24 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-  </a>
-  <a href="#categorias" class="btn btn-primary">Comprar ahora</a>
+<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Buscar productos">
+  <div class="search-box">
+    <div class="search-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search-input" type="search" placeholder="Buscar grips, wristbands, colores…" autocomplete="off" aria-label="Buscar">
+      <button id="search-close" class="icon-btn" type="button" aria-label="Cerrar búsqueda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <ul id="search-results"></ul>
+  </div>
+</div>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox__close" type="button" aria-label="Cerrar imagen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <img src="" alt="">
 </div>
 
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
