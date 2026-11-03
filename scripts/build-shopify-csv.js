@@ -41,10 +41,8 @@ const products = [
       ['Morado + verde neón', 'MoVnVn', 'grips-movnvn.jpg'],
     ],
     sizes: [['S', '001'], ['M', '002'], ['L', '003']],
-    extraImages: [
-      ['grips-infografia.jpg', 'Infografía oficial de Grips: tecnologías, colores, tallas y precio'],
-      ['grips-guia-tallas.jpg', 'Guía para medir el perímetro de la muñeca y elegir la talla'],
-    ],
+    // Las infografías solo son fuente de información: no se suben como fotos del producto.
+    extraImages: [],
   },
   {
     handle: 'monkey-wristbands',
@@ -74,7 +72,7 @@ const products = [
       ['Negro + naranja', 'WB-NeNa-001', 'wristbands-nena.jpg'],
       ['Negro + azul celeste', 'WB-NeAz-001', 'wristbands-neaz.jpg'],
     ],
-    extraImages: [['wristbands-infografia.jpg', 'Infografía oficial de Monkey Wristbands']],
+    extraImages: [],
   },
   {
     handle: 'monkey-grip-travel-bag',
@@ -99,7 +97,7 @@ const products = [
       ['Negro', '', 'travel-bag-negro.jpg'],
       ['Morado', '', 'travel-bag-morado.jpg'],
     ],
-    extraImages: [['travel-bag-infografia.jpg', 'Infografía de la Monkey Grip Travel Bag']],
+    extraImages: [],
   },
 ];
 

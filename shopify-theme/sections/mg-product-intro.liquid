@@ -1,18 +1,46 @@
 {%- assign benefits = section.settings.benefits | strip | newline_to_br | split: '<br />' -%}
 <section class="color-{{ section.settings.color_scheme }} gradient mg-bordered">
-  <div class="page-width mg-section mg-section--tight mg-cols">
-    <div class="mg-prose">
-      <h2 class="mg-display mg-title">
-        {{- section.settings.title_line_1 -}}
-        {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
-      </h2>
-      <div class="mg-rte">{{ product.description }}</div>
+  <div class="page-width mg-section mg-section--tight">
+    <div class="mg-cols">
+      <div class="mg-prose">
+        <h2 class="mg-display mg-title">
+          {{- section.settings.title_line_1 -}}
+          {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
+        </h2>
+        {%- if section.settings.tagline != blank -%}<p class="mg-tagline">{{ section.settings.tagline }}</p>{%- endif -%}
+        <div class="mg-rte">{{ product.description }}</div>
+      </div>
+      {%- if section.settings.asset != blank or section.settings.benefits != blank -%}
+        <div class="mg-prose">
+          {%- if section.settings.asset != blank -%}
+            <figure class="mg-row__media">
+              <img
+                src="{{ section.settings.asset | asset_url }}"
+                alt="{{ section.settings.image_alt | escape }}"
+                width="{{ section.settings.image_w }}"
+                height="{{ section.settings.image_h }}"
+                loading="lazy"
+              >
+            </figure>
+          {%- endif -%}
+          {%- if section.settings.benefits != blank -%}
+            <ul class="mg-benefits">
+              {%- for item in benefits -%}
+                {%- assign text = item | strip -%}
+                {%- if text != blank -%}<li>{% render 'mg-icon-check' %}<span>{{ text }}</span></li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
-    {%- if section.settings.benefits != blank -%}
-      <ul class="mg-benefits">
-        {%- for item in benefits -%}
-          {%- assign text = item | strip -%}
-          {%- if text != blank -%}<li>{% render 'mg-icon-check' %}<span>{{ text }}</span></li>{%- endif -%}
+    {%- if section.settings.attrs != blank -%}
+      {%- assign attrs = section.settings.attrs | strip | newline_to_br | split: '<br />' -%}
+      {%- if section.settings.attrs_title != blank -%}<p class="mg-row__label">{{ section.settings.attrs_title }}</p>{%- endif -%}
+      <ul class="mg-attrs" style="--mg-n: {{ attrs.size }};">
+        {%- for item in attrs -%}
+          {%- assign cells = item | strip | split: '|' -%}
+          <li><b>{{ cells[0] | strip }}</b>{%- if cells[1] != blank -%}<span>{{ cells[1] | strip }}</span>{%- endif -%}</li>
         {%- endfor -%}
       </ul>
     {%- endif -%}
@@ -27,7 +55,16 @@
   "settings": [
     { "type": "text", "id": "title_line_1", "label": "Título (blanco)" },
     { "type": "text", "id": "title_line_2", "label": "Título (amarillo)" },
+    { "type": "text", "id": "tagline", "label": "Frase bajo el título" },
     { "type": "textarea", "id": "benefits", "label": "Beneficios (uno por línea)" },
+    { "type": "header", "content": "Foto" },
+    { "type": "text", "id": "asset", "label": "Foto (archivo del tema)" },
+    { "type": "text", "id": "image_alt", "label": "Texto alternativo" },
+    { "type": "number", "id": "image_w", "label": "Ancho de la foto (px)", "default": 800 },
+    { "type": "number", "id": "image_h", "label": "Alto de la foto (px)", "default": 600 },
+    { "type": "header", "content": "Franja de atributos" },
+    { "type": "text", "id": "attrs_title", "label": "Título de la franja" },
+    { "type": "textarea", "id": "attrs", "label": "Atributos (Título|Texto, uno por línea)" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
   ],
   "presets": [{ "name": "MG · Descripción" }]

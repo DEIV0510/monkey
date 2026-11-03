@@ -82,15 +82,42 @@
         "title_line_1": "Un solo equipo.",
         "title_line_2": "Todas tus actividades.",
         "benefits": "Organiza por actividad: distribuye esenciales, implementos y carga en tres módulos.\nAdapta tu capacidad: 50 L base y hasta 60 L expandida, según las capacidades declaradas.\nMantén tus esenciales a mano con QUICK POD.\nSepara calzado, ropa u otros objetos con CARGO POD.\nAcompaña entrenamiento, viajes, trabajo y actividades del día a día.",
+        "attrs_title": "Para todas tus actividades",
+        "attrs": "Gym / CrossFit|\nFotografía|\nTrekking|\nFisioterapia|\nUso diario|",
         "color_scheme": "scheme-1"
       }
+    },
+    "vistas": {
+      "type": "mg-detail",
+      "settings": {
+        "title": "",
+        "title_accent": "",
+        "anchor": "vistas",
+        "layout": "rows",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "v-1": {
+          "type": "gallery",
+          "settings": {
+            "title": "Vistas",
+            "text": "Monkey Grip Travel Bag en color verde.",
+            "ratio": "9 / 16",
+            "columns_mobile": 2,
+            "items": "mg-ig-tb-frontal.jpg|Vista frontal\nmg-ig-tb-lateral.jpg|Vista lateral\nmg-ig-tb-posterior.jpg|Vista posterior\nmg-ig-tb-superior.jpg|Vista superior\nmg-ig-tb-sin-accesorios.jpg|Sin accesorios|50 L"
+          }
+        }
+      },
+      "block_order": [
+        "v-1"
+      ]
     },
     "modex": {
       "type": "mg-modex",
       "settings": {
         "title_line_1": "Sistema",
         "title_line_2": "MODEX™",
-        "text": "Modular Expansion System: acceso rápido, organización y carga expandible. Los tres pods están incluidos en el precio.",
+        "text": "Modular Expansion System: sistema modular desarrollado por Monkey Grip que te permite adaptar la configuración de tu Travel Bag según la actividad y expandir su capacidad de 50 L hasta 60 L mediante tres módulos removibles. Los tres pods están incluidos en el precio.",
         "intro_asset": "mg-modex-1.jpg",
         "intro_alt": "Composición publicitaria conceptual: presentación del sistema MODEX",
         "full_asset": "mg-modex-5.jpg",
@@ -133,8 +160,9 @@
           "settings": {
             "asset": "mg-modex-2.jpg",
             "title": "QUICK POD™",
-            "sub": "Acceso rápido. Todo a la mano.",
-            "text": "Módulo para organizar los esenciales que necesitas tener al alcance: celular, llaves, documentos, audífonos y snacks."
+            "sub": "Módulo de acceso rápido",
+            "text": "Módulo para organizar los esenciales que necesitas tener al alcance: celular, llaves, documentos, audífonos y snacks.",
+            "bullets": "Acceso inmediato.\nIdeal para documentos, accesorios y objetos pequeños.\nOrganización interna.\nRemovible y versátil."
           }
         },
         "m-6": {
@@ -142,8 +170,9 @@
           "settings": {
             "asset": "mg-modex-3.jpg",
             "title": "GEAR POD™",
-            "sub": "Organiza tu equipo.",
-            "text": "Módulo para reunir implementos y accesorios de entrenamiento, como grips, muñequeras y sogas."
+            "sub": "Módulo de organización",
+            "text": "Módulo para reunir implementos y accesorios de entrenamiento, como grips, muñequeras y sogas.",
+            "bullets": "Mayor capacidad de organización.\nPerfecto para implementos, accesorios y utensilios.\nSistema modular.\nRemovible y versátil."
           }
         },
         "m-7": {
@@ -151,8 +180,9 @@
           "settings": {
             "asset": "mg-modex-4.jpg",
             "title": "CARGO POD™",
-            "sub": "Expande tu capacidad.",
-            "text": "Módulo de carga para separar calzado, ropa u otros accesorios."
+            "sub": "Módulo de carga expandible",
+            "text": "Módulo de carga para separar calzado, ropa u otros accesorios.",
+            "bullets": "Capacidad adicional sin usar el compartimento principal.\nIdeal para zapatos, ropa húmeda, comida, suplementación, etc.\nMantiene el contenido aislado.\nColapsable y removible."
           }
         }
       },
@@ -164,6 +194,71 @@
         "m-5",
         "m-6",
         "m-7"
+      ]
+    },
+    "construccion": {
+      "type": "mg-detail",
+      "settings": {
+        "title": "",
+        "title_accent": "",
+        "anchor": "construccion",
+        "layout": "cards",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "k-1": {
+          "type": "row",
+          "settings": {
+            "asset": "mg-ig-tb-materiales.jpg",
+            "image_alt": "Gotas de agua sobre la lona de la Travel Bag",
+            "image_w": 272,
+            "image_h": 432,
+            "title": "Materiales premium",
+            "sub": "",
+            "text": "",
+            "bullets": "Tela de alta resistencia.\nRepelente al agua.\nCierres reforzados.\nCosturas de alto rendimiento.\nDiseñada para uso intensivo.",
+            "items": "",
+            "attrs": "",
+            "note": ""
+          }
+        },
+        "k-2": {
+          "type": "row",
+          "settings": {
+            "asset": "mg-ig-tb-ergonomia.jpg",
+            "image_alt": "Espaldar acolchado y correas de la Travel Bag",
+            "image_w": 294,
+            "image_h": 432,
+            "title": "Diseño ergonómico",
+            "sub": "",
+            "text": "",
+            "bullets": "Espaldar acolchado.\nCorreas ajustables.\nDistribución de peso eficiente.\nComodidad en movimientos y desplazamientos largos.",
+            "items": "",
+            "attrs": "",
+            "note": ""
+          }
+        },
+        "k-3": {
+          "type": "row",
+          "settings": {
+            "asset": "mg-ig-tb-detalles.jpg",
+            "image_alt": "Hebilla y reatas de compresión de la Travel Bag",
+            "image_w": 264,
+            "image_h": 432,
+            "title": "Detalles que hacen la diferencia",
+            "sub": "",
+            "text": "",
+            "bullets": "Sistema modular.\nReatas de compresión.\nPaneles de velcro.\nMúltiples puntos de sujeción.\nDiseño funcional y robusto.",
+            "items": "",
+            "attrs": "",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "k-1",
+        "k-2",
+        "k-3"
       ]
     },
     "ficha": {
@@ -250,7 +345,9 @@
   "order": [
     "main",
     "intro",
+    "vistas",
     "modex",
+    "construccion",
     "ficha",
     "related-products"
   ]

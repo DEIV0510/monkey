@@ -46,6 +46,10 @@
                   {%- if block.settings.numbered -%}</ol>{%- else -%}</ul>{%- endif -%}
                 {%- when 'text' -%}
                   <div class="mg-rte">{{ block.settings.text }}</div>
+                {%- when 'image' -%}
+                  <figure class="mg-row__media mg-cols__image">
+                    <img src="{{ block.settings.asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="{{ block.settings.image_w }}" height="{{ block.settings.image_h }}" loading="lazy">
+                  </figure>
                 {%- when 'contact' -%}
                   {%- assign message = block.settings.message | default: settings.mg_whatsapp_message -%}
                   <div class="mg-actions">
@@ -98,6 +102,15 @@
       { "type": "text", "id": "title", "label": "Título" },
       { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
       { "type": "richtext", "id": "text", "label": "Texto" }
+    ] },
+    { "type": "image", "name": "Foto", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "2", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
+      { "type": "text", "id": "asset", "label": "Foto (archivo del tema)" },
+      { "type": "text", "id": "image_alt", "label": "Texto alternativo" },
+      { "type": "number", "id": "image_w", "label": "Ancho (px)", "default": 800 },
+      { "type": "number", "id": "image_h", "label": "Alto (px)", "default": 600 }
     ] },
     { "type": "contact", "name": "Botones de contacto", "settings": [
       { "type": "select", "id": "column", "label": "Columna", "default": "2", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },

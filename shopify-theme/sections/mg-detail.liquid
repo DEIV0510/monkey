@@ -1,0 +1,163 @@
+{% comment %}
+  Información de producto con fotos recortadas de las infografías oficiales.
+  Bloques: fila (foto + texto, viñetas, lista con miniaturas y franja de atributos) y galería.
+  Listas en textarea, una entrada por línea: miniaturas «archivo|Nombre|Texto», atributos «Título|Texto»,
+  galería «archivo|Pie|Texto». Los archivos son imágenes del tema (assets).
+{% endcomment %}
+<section {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}" {% endif %}class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    {%- if section.settings.title != blank -%}
+      <div class="mg-head">
+        <h2 class="mg-display mg-title">
+          {{- section.settings.title -}}
+          {%- if section.settings.title_accent != blank -%}<br><span class="mg-accent">{{ section.settings.title_accent }}</span>{%- endif -%}
+        </h2>
+        {%- if section.settings.intro != blank -%}<p class="mg-lead">{{ section.settings.intro }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="mg-detail mg-detail--{{ section.settings.layout }}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'row' -%}
+            <article class="mg-row{% if block.settings.asset == blank %} mg-row--text{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.asset != blank -%}
+                <figure class="mg-row__media">
+                  <img
+                    src="{{ block.settings.asset | asset_url }}"
+                    alt="{{ block.settings.image_alt | escape }}"
+                    width="{{ block.settings.image_w }}"
+                    height="{{ block.settings.image_h }}"
+                    loading="lazy"
+                  >
+                  {%- if block.settings.inset != blank -%}
+                    <img class="mg-row__inset" src="{{ block.settings.inset | asset_url }}" alt="{{ block.settings.inset_alt | escape }}" width="200" height="200" loading="lazy">
+                  {%- endif -%}
+                </figure>
+              {%- endif -%}
+              <div class="mg-row__body">
+                {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
+                {%- if block.settings.sub != blank -%}<p class="mg-info-card__sub">{{ block.settings.sub }}</p>{%- endif -%}
+                {%- if block.settings.text != blank -%}<p class="mg-row__text">{{ block.settings.text }}</p>{%- endif -%}
+
+                {%- if block.settings.bullets != blank -%}
+                  {%- assign bullets = block.settings.bullets | strip | newline_to_br | split: '<br />' -%}
+                  <ul class="mg-list mg-row__bullets">
+                    {%- for item in bullets -%}
+                      {%- assign text = item | strip -%}
+                      {%- if text != blank -%}<li>{{ text }}</li>{%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+                {%- if block.settings.items != blank -%}
+                  {%- if block.settings.items_title != blank -%}<p class="mg-row__label">{{ block.settings.items_title }}</p>{%- endif -%}
+                  {%- assign items = block.settings.items | strip | newline_to_br | split: '<br />' -%}
+                  <ul class="mg-chips mg-chips--{{ block.settings.items_ratio }}">
+                    {%- for item in items -%}
+                      {%- assign cells = item | strip | split: '|' -%}
+                      {%- if cells.size > 1 -%}
+                        {%- assign file = cells[0] | strip -%}
+                        <li>
+                          {%- if file != blank -%}<img src="{{ file | asset_url }}" alt="" width="96" height="96" loading="lazy">{%- endif -%}
+                          <div><b>{{ cells[1] | strip }}</b>{%- if cells[2] != blank -%}<span>{{ cells[2] | strip }}</span>{%- endif -%}</div>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+                {%- if block.settings.attrs != blank -%}
+                  {%- assign attrs = block.settings.attrs | strip | newline_to_br | split: '<br />' -%}
+                  <ul class="mg-attrs" style="--mg-n: {{ attrs.size }};">
+                    {%- for item in attrs -%}
+                      {%- assign cells = item | strip | split: '|' -%}
+                      <li><b>{{ cells[0] | strip }}</b>{%- if cells[1] != blank -%}<span>{{ cells[1] | strip }}</span>{%- endif -%}</li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+                {%- if block.settings.note != blank -%}<p class="mg-row__note">{{ block.settings.note }}</p>{%- endif -%}
+              </div>
+            </article>
+
+          {%- when 'gallery' -%}
+            {%- assign items = block.settings.items | strip | newline_to_br | split: '<br />' -%}
+            <div class="mg-gallery" {{ block.shopify_attributes }}>
+              {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
+              {%- if block.settings.text != blank -%}<p class="mg-row__text">{{ block.settings.text }}</p>{%- endif -%}
+              <ul class="mg-gallery__grid" style="--mg-cols: {{ items.size }}; --mg-cols-m: {{ block.settings.columns_mobile }}; --mg-ratio: {{ block.settings.ratio }};">
+                {%- for item in items -%}
+                  {%- assign cells = item | strip | split: '|' -%}
+                  {%- assign file = cells[0] | strip -%}
+                  {%- if file != blank -%}
+                    <li>
+                      <figure>
+                        <img src="{{ file | asset_url }}" alt="{{ cells[1] | strip | escape }}" width="300" height="300" loading="lazy">
+                        {%- if cells[1] != blank -%}
+                          <figcaption><b>{{ cells[1] | strip }}</b>{%- if cells[2] != blank -%}<span>{{ cells[2] | strip }}</span>{%- endif -%}</figcaption>
+                        {%- endif -%}
+                      </figure>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Detalle con fotos",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título (blanco)" },
+    { "type": "text", "id": "title_accent", "label": "Título (amarillo)" },
+    { "type": "textarea", "id": "intro", "label": "Introducción" },
+    { "type": "select", "id": "layout", "label": "Disposición", "default": "rows", "options": [
+      { "value": "rows", "label": "Filas alternadas" },
+      { "value": "cards", "label": "Tarjetas en columnas" }
+    ] },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Fila", "settings": [
+      { "type": "text", "id": "asset", "label": "Foto (archivo del tema)" },
+      { "type": "text", "id": "image_alt", "label": "Texto alternativo" },
+      { "type": "number", "id": "image_w", "label": "Ancho de la foto (px)", "default": 800 },
+      { "type": "number", "id": "image_h", "label": "Alto de la foto (px)", "default": 600 },
+      { "type": "text", "id": "inset", "label": "Detalle circular (archivo del tema)" },
+      { "type": "text", "id": "inset_alt", "label": "Texto alternativo del detalle" },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "text", "id": "sub", "label": "Subtítulo" },
+      { "type": "textarea", "id": "text", "label": "Texto" },
+      { "type": "textarea", "id": "bullets", "label": "Viñetas (una por línea)" },
+      { "type": "text", "id": "items_title", "label": "Título de la lista" },
+      { "type": "textarea", "id": "items", "label": "Lista (archivo|Nombre|Texto, una por línea)" },
+      { "type": "select", "id": "items_ratio", "label": "Forma de las miniaturas", "default": "square", "options": [
+        { "value": "square", "label": "Cuadrada" },
+        { "value": "wide", "label": "Horizontal" }
+      ] },
+      { "type": "textarea", "id": "attrs", "label": "Atributos (Título|Texto, uno por línea)" },
+      { "type": "text", "id": "note", "label": "Nota final" }
+    ] },
+    { "type": "gallery", "name": "Galería", "settings": [
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "textarea", "id": "text", "label": "Texto" },
+      { "type": "textarea", "id": "items", "label": "Fotos (archivo|Pie|Texto, una por línea)" },
+      { "type": "select", "id": "ratio", "label": "Proporción", "default": "3 / 4", "options": [
+        { "value": "9 / 16", "label": "Vertical alta" },
+        { "value": "3 / 4", "label": "Vertical" },
+        { "value": "4 / 3", "label": "Horizontal" }
+      ] },
+      { "type": "range", "id": "columns_mobile", "label": "Columnas en celular", "min": 1, "max": 3, "step": 1, "default": 2 }
+    ] }
+  ],
+  "presets": [{ "name": "MG · Detalle con fotos" }]
+}
+{% endschema %}

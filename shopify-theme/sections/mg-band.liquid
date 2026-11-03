@@ -47,17 +47,26 @@
       {%- else -%}
         {%- assign zoom_src = section.settings.asset | asset_url -%}
       {%- endif -%}
-      <figure class="mg-figure" data-mg-zoom="{{ zoom_src }}">
+      {%- comment -%} Las fotos pequeñas (recortes) no se amplían: el visor las estiraría. {%- endcomment -%}
+      <figure class="mg-figure{% if media_image == blank and section.settings.asset_w < 900 %} mg-figure--still{% endif %}"{% if media_image != blank or section.settings.asset_w >= 900 %} data-mg-zoom="{{ zoom_src }}"{% endif %}>
         {%- if media_image != blank -%}
           {{ media_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '640, 900, 1400', sizes: '(min-width: 990px) 560px, 90vw', alt: media_image.alt }}
+        {%- elsif section.settings.asset_w < 900 -%}
+          <img
+            src="{{ section.settings.asset | asset_url }}"
+            alt="{{ section.settings.image_alt | escape }}"
+            width="{{ section.settings.asset_w }}"
+            height="{{ section.settings.asset_h }}"
+            loading="lazy"
+          >
         {%- else -%}
           <img
             src="{{ section.settings.asset | asset_img_url: '1024x' }}"
             srcset="{{ section.settings.asset | asset_img_url: '640x' }} 640w, {{ section.settings.asset | asset_img_url: '1024x' }} 1024w"
             sizes="(min-width: 990px) 560px, 90vw"
             alt="{{ section.settings.image_alt | escape }}"
-            width="1024"
-            height="1024"
+            width="{{ section.settings.asset_w }}"
+            height="{{ section.settings.asset_h }}"
             loading="lazy"
           >
         {%- endif -%}
@@ -85,6 +94,8 @@
     { "type": "range", "id": "media_index", "label": "O foto del producto (posición; 0 = ninguna)", "min": 0, "max": 20, "step": 1, "default": 0 },
     { "type": "text", "id": "asset", "label": "O archivo del tema (nombre)" },
     { "type": "text", "id": "image_alt", "label": "Texto alternativo (archivo del tema)" },
+    { "type": "number", "id": "asset_w", "label": "Ancho del archivo (px)", "default": 1024 },
+    { "type": "number", "id": "asset_h", "label": "Alto del archivo (px)", "default": 1024 },
     { "type": "text", "id": "caption", "label": "Pie de imagen" },
     { "type": "checkbox", "id": "reverse", "label": "Imagen a la izquierda", "default": false },
     { "type": "text", "id": "anchor", "label": "Ancla (id)" },

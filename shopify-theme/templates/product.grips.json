@@ -40,7 +40,8 @@
             "intro": "La talla se elige según el perímetro de la muñeca, medido en centímetros.",
             "rows": "S|12–16 cm\nM|16–21 cm\nL|más de 21 cm",
             "steps": "Rodea tu muñeca con una cinta métrica, lo más ajustada posible. Si no tienes una, utiliza un hilo, lana o una tira de papel y enróscala alrededor de la muñeca.\nHaz una marca que indique el perímetro de tu muñeca, ajustándola bien.\nExtiende el hilo, la lana o el papel sobre una regla y comprueba cuántos centímetros mide. Si usaste cinta métrica, lee la medida directamente.\nConsulta la tabla y selecciona la talla correspondiente.",
-            "media_index": 8
+            "media_index": 0,
+            "asset": "mg-ig-guia-muneca.jpg"
           }
         },
         "b-7": {
@@ -98,58 +99,114 @@
     "intro": {
       "type": "mg-product-intro",
       "settings": {
-        "title_line_1": "Agarre sin",
-        "title_line_2": "magnesio.",
-        "benefits": "Adherencia sin magnesio en los tipos de barra indicados.\nFlexibilidad y confort para acompañar el entrenamiento.\nProtección de las manos durante el contacto con la barra.\nDurabilidad mediante el compuesto POLYGRIP™ y la construcción FORGEX™.\nSeis combinaciones de color y tallas S, M y L.",
+        "title_line_1": "Adherencia extrema",
+        "title_line_2": "sin magnesio.",
+        "tagline": "Tu equipo. Tu rendimiento. Sin límites.",
+        "asset": "mg-ig-grips-atleta.jpg",
+        "image_alt": "Atleta con grips Monkey Grip en un gimnasio de CrossFit",
+        "image_w": 772,
+        "image_h": 724,
+        "benefits": "",
+        "attrs": "Adherencia|Agarre en cualquier tipo de barra.\nConfort|Se adapta a tu mano para un entrenamiento más cómodo.\nProtección|Cuida tus manos en cada repetición.\nDurabilidad|Diseñados para un uso intensivo y de larga vida útil.\nCompatibilidad|Funciona en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas.",
         "color_scheme": "scheme-1"
       }
     },
     "tecnologias": {
-      "type": "mg-info-cards",
+      "type": "mg-detail",
       "settings": {
-        "title": "Tecnologías",
+        "title": "Nuestras",
+        "title_accent": "tecnologías",
         "anchor": "tecnologias",
+        "layout": "rows",
         "color_scheme": "scheme-2"
       },
       "blocks": {
-        "card-1": {
-          "type": "card",
+        "row-1": {
+          "type": "row",
           "settings": {
+            "asset": "mg-ig-gripnex.jpg",
+            "image_alt": "Grip Monkey Grip verde menta con su superficie GRIPNEX",
+            "image_w": 532,
+            "image_h": 834,
+            "inset": "mg-ig-gripnex-zoom.jpg",
+            "inset_alt": "Detalle de la textura de la superficie GRIPNEX",
             "title": "GRIPNEX™",
-            "sub": "Adherencia sin magnesio",
-            "text": "Tecnología de adherencia sin magnesio en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas."
+            "sub": "La siguiente generación en adherencia",
+            "text": "Tecnología de adherencia desarrollada para proporcionar un agarre sin necesidad de magnesio en diferentes tipos de barra.",
+            "bullets": "Máxima fricción sin magnesio.\nAgarre constante.\nMayor control en cada repetición.",
+            "items_title": "Adherencia real en cualquier barra",
+            "items_ratio": "wide",
+            "items": "mg-ig-barra-lisa.jpg|Lisa|\nmg-ig-barra-corrugada.jpg|Corrugada|\nmg-ig-barra-pintada.jpg|Pintada / lacada|\nmg-ig-barra-electrostatica.jpg|Pintura electrostática|\nmg-ig-barra-oxidada.jpg|Oxidada|",
+            "attrs": "",
+            "note": ""
           }
         },
-        "card-2": {
-          "type": "card",
+        "row-2": {
+          "type": "row",
           "settings": {
+            "asset": "mg-ig-polygrip.jpg",
+            "image_alt": "Materiales del compuesto POLYGRIP: caucho, sílice, goma miel y aceites",
+            "image_w": 628,
+            "image_h": 412,
+            "inset": "",
+            "inset_alt": "",
             "title": "POLYGRIP™",
-            "sub": "Compuesto base caucho",
-            "text": "Compuesto polimérico de base caucho que combina adherencia, flexibilidad, confort y durabilidad."
+            "sub": "Materiales que hacen la diferencia",
+            "text": "Compuesto polimérico de base caucho desarrollado con una formulación propia para combinar adherencia, flexibilidad, confort y durabilidad.",
+            "bullets": "",
+            "items_title": "Composición",
+            "items_ratio": "square",
+            "items": "mg-ig-caucho.jpg|Caucho natural|Base principal del compuesto.\nmg-ig-silice.jpg|Sílice|Mejora la adherencia y resistencia.\nmg-ig-goma-miel.jpg|Goma miel|Aumenta la elasticidad y durabilidad.\nmg-ig-aceites.jpg|Aceites extensores|Dan flexibilidad y confort.\nmg-ig-aditivos.jpg|Aditivos especiales|Mejoran el rendimiento y la estabilidad.",
+            "attrs": "Flexibilidad|Movimiento natural.\nResistencia|Uso intensivo.\nConfort|Entrenamientos más largos.\nMayor vida útil|Materiales premium.",
+            "note": ""
           }
         },
-        "card-3": {
-          "type": "card",
+        "row-3": {
+          "type": "row",
           "settings": {
+            "asset": "mg-ig-forgex.jpg",
+            "image_alt": "Las cinco capas internas de la estructura FORGEX",
+            "image_w": 724,
+            "image_h": 412,
+            "inset": "",
+            "inset_alt": "",
             "title": "FORGEX™",
-            "sub": "Cinco capas internas",
-            "text": "Estructura de cinco capas internas con funciones diferenciadas para responder a las exigencias mecánicas en los ejes longitudinal, transversal y perpendicular."
+            "sub": "Estructura de cinco capas y resistencia en 3 ejes",
+            "text": "Sistema de construcción de cinco capas internas con funciones diferenciadas, diseñado para responder a las exigencias mecánicas del grip en sus tres ejes: longitudinal, transversal y perpendicular.",
+            "bullets": "",
+            "items_title": "Resistencia en 3 ejes",
+            "items_ratio": "square",
+            "items": "|Longitudinal|Mayor tracción.\n|Transversal|Mayor estabilidad.\n|Perpendicular|Mayor control.",
+            "attrs": "Estructura 5 capas|Funciones diferenciadas.\nAlto rendimiento|En entrenamientos exigentes.\nResistencia total|Diseño pensado para durar.",
+            "note": ""
           }
         },
-        "card-4": {
-          "type": "card",
+        "row-4": {
+          "type": "row",
           "settings": {
+            "asset": "mg-ig-grips-colores.jpg",
+            "image_alt": "Los seis colores oficiales de los Grips Monkey Grip",
+            "image_w": 492,
+            "image_h": 114,
+            "inset": "",
+            "inset_alt": "",
             "title": "MG-FUSION™",
-            "sub": "Fabricación propia",
-            "text": "Proceso de fabricación propio desarrollado desde cero por Monkey Grip, mediante el cual se integran los materiales y se construye el producto final."
+            "sub": "Proceso de fabricación propio",
+            "text": "Proceso de fabricación desarrollado desde cero por Monkey Grip, mediante el cual integramos nuestros materiales y construimos el producto final.",
+            "bullets": "",
+            "items_title": "Catálogo oficial de colores",
+            "items_ratio": "square",
+            "items": "|Negro + azul celeste|NeAzAz\n|Fucsia + negro|FuNeNe\n|Negro + blanco|NeBlBl\n|Verde menta + naranja neón|VmNaBl\n|Blanco + fucsia|BlFuFu\n|Morado + verde neón|MoVnVn",
+            "attrs": "",
+            "note": "Entrena. Progresa. Repite. Sin límites."
           }
         }
       },
       "block_order": [
-        "card-1",
-        "card-2",
-        "card-3",
-        "card-4"
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4"
       ]
     },
     "ficha": {
@@ -189,12 +246,25 @@
             "numbered": true,
             "items": "Rodea tu muñeca con una cinta métrica, lo más ajustada posible. Si no tienes una, utiliza un hilo, lana o una tira de papel y enróscala alrededor de la muñeca.\nHaz una marca que indique el perímetro de tu muñeca, ajustándola bien.\nExtiende el hilo, la lana o el papel sobre una regla y comprueba cuántos centímetros mide. Si usaste cinta métrica, lee la medida directamente.\nConsulta la tabla y selecciona la talla correspondiente."
           }
+        },
+        "c-4": {
+          "type": "image",
+          "settings": {
+            "column": "2",
+            "title": "",
+            "big_title": false,
+            "asset": "mg-ig-guia-muneca.jpg",
+            "image_alt": "Cinta métrica alrededor de la muñeca para medir su perímetro",
+            "image_w": 488,
+            "image_h": 838
+          }
         }
       },
       "block_order": [
         "c-1",
         "c-2",
-        "c-3"
+        "c-3",
+        "c-4"
       ]
     },
     "cuidados": {

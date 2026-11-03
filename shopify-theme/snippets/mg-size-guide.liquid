@@ -25,7 +25,7 @@
         </button>
       </form>
       <h2 id="{{ dialog_id }}-title" class="mg-dialog__title">{{ block.settings.title }}</h2>
-      <div class="mg-dialog__grid{% if guide_image == blank %} mg-dialog__grid--single{% endif %}">
+      <div class="mg-dialog__grid{% if guide_image == blank and block.settings.asset == blank %} mg-dialog__grid--single{% endif %}">
         <div class="mg-prose">
           {%- if block.settings.intro != blank -%}<p>{{ block.settings.intro }}</p>{%- endif -%}
           <table class="mg-size-table">
@@ -48,6 +48,8 @@
         </div>
         {%- if guide_image != blank -%}
           {{ guide_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 900', sizes: '(min-width: 750px) 360px, 90vw', alt: guide_image.alt }}
+        {%- elsif block.settings.asset != blank -%}
+          <img src="{{ block.settings.asset | asset_url }}" alt="Cinta métrica alrededor de la muñeca para medir su perímetro" width="488" height="838" loading="lazy">
         {%- endif -%}
       </div>
     </div>

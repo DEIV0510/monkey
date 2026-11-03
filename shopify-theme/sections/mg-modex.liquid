@@ -39,6 +39,15 @@
               <h3>{{ block.settings.title }}</h3>
               {%- if block.settings.sub != blank -%}<p class="mg-info-card__sub">{{ block.settings.sub }}</p>{%- endif -%}
               <p>{{ block.settings.text }}</p>
+              {%- if block.settings.bullets != blank -%}
+                {%- assign bullets = block.settings.bullets | strip | newline_to_br | split: '<br />' -%}
+                <ul class="mg-list mg-row__bullets">
+                  {%- for item in bullets -%}
+                    {%- assign text = item | strip -%}
+                    {%- if text != blank -%}<li>{{ text }}</li>{%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
             </div>
           </article>
         {%- endif -%}
@@ -81,7 +90,8 @@
       { "type": "text", "id": "asset", "label": "Imagen (archivo del tema)" },
       { "type": "text", "id": "title", "label": "Nombre" },
       { "type": "text", "id": "sub", "label": "Subtítulo" },
-      { "type": "textarea", "id": "text", "label": "Texto" }
+      { "type": "textarea", "id": "text", "label": "Texto" },
+      { "type": "textarea", "id": "bullets", "label": "Viñetas (una por línea)" }
     ] }
   ],
   "presets": [{ "name": "MG · Sistema MODEX" }]

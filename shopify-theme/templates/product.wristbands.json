@@ -86,9 +86,15 @@
     "intro": {
       "type": "mg-product-intro",
       "settings": {
-        "title_line_1": "Sudor bajo",
-        "title_line_2": "control.",
+        "title_line_1": "Soporte. Confort.",
+        "title_line_2": "Estilo. Siempre contigo.",
+        "tagline": "Diseñadas para acompañar cada entrenamiento.",
+        "asset": "mg-ig-wb-manos.jpg",
+        "image_alt": "Manos en la barra con Monkey Wristbands blanco y fucsia",
+        "image_w": 434,
+        "image_h": 432,
         "benefits": "",
+        "attrs": "Alta absorción|Mantiene tus manos secas por más tiempo.\nConfort|Suave al contacto con la piel.\nDurabilidad|Resiste entrenamientos intensos y lavados frecuentes.\nVersatilidad|Ideal para CrossFit, gimnasio y deportes en general.",
         "color_scheme": "scheme-1"
       }
     },
@@ -104,24 +110,24 @@
           "type": "card",
           "settings": {
             "title": "SWEATLOCK™",
-            "sub": "Control de humedad",
-            "text": "Ayuda a absorber y retener el sudor, reduciendo la humedad que se desplaza desde los brazos hacia las manos."
+            "sub": "Mantiene tus manos secas",
+            "text": "Tejido de alta absorción que controla el sudor y te mantiene cómodo en todo momento. Ayuda a absorber y retener el sudor, reduciendo la humedad que se desplaza desde los brazos hacia las manos."
           }
         },
         "card-2": {
           "type": "card",
           "settings": {
             "title": "FLEXFIT™",
-            "sub": "Ajuste elástico adaptable",
-            "text": "Su combinación de fibras permite adaptarse a distintas medidas de muñeca, manteniendo la comodidad durante el entrenamiento."
+            "sub": "Ajuste perfecto",
+            "text": "Fibras elásticas que se adaptan a tu muñeca sin perder su forma, brindando soporte constante durante el entrenamiento."
           }
         },
         "card-3": {
           "type": "card",
           "settings": {
             "title": "SOFTGUARD™",
-            "sub": "Confort de contacto",
-            "text": "Su tejido suave aporta una capa cómoda alrededor de las muñecas durante la actividad deportiva."
+            "sub": "Confort duradero",
+            "text": "Material suave que protege tu piel, evitando irritaciones en entrenamientos intensos."
           }
         }
       },
@@ -129,6 +135,63 @@
         "card-1",
         "card-2",
         "card-3"
+      ]
+    },
+    "detalle": {
+      "type": "mg-detail",
+      "settings": {
+        "title": "",
+        "title_accent": "",
+        "anchor": "detalles",
+        "layout": "rows",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "d-1": {
+          "type": "row",
+          "settings": {
+            "asset": "mg-ig-wb-vista.jpg",
+            "image_alt": "Monkey Wristbands blanco y fucsia, vista frontal y posterior",
+            "image_w": 430,
+            "image_h": 288,
+            "inset": "mg-ig-wb-tejido.jpg",
+            "inset_alt": "Detalle del tejido de punto",
+            "title": "Tejido premium",
+            "sub": "Vista frontal y posterior",
+            "text": "Alta absorción de sudor, suave al contacto con la piel y de secado rápido.",
+            "bullets": "",
+            "items_title": "Composición",
+            "items_ratio": "square",
+            "items": "mg-ig-wb-algodon.jpg|Algodón|Suavidad y absorción.\nmg-ig-wb-elastomero.jpg|Elastómero|Elasticidad y ajuste.\nmg-ig-wb-nylon.jpg|Nylon|Resistencia y durabilidad.",
+            "attrs": "",
+            "note": ""
+          }
+        },
+        "d-2": {
+          "type": "gallery",
+          "settings": {
+            "title": "Detalles",
+            "text": "",
+            "ratio": "4 / 3",
+            "columns_mobile": 1,
+            "items": "mg-ig-wb-detalle-logo.jpg|Tejido de alta calidad|Logo Monkey Grip tejido.\nmg-ig-wb-detalle-acabados.jpg|Acabados reforzados|Mayor resistencia y durabilidad.\nmg-ig-wb-detalle-textura.jpg|Textura real|Colores sólidos y gran definición."
+          }
+        },
+        "d-3": {
+          "type": "gallery",
+          "settings": {
+            "title": "Usos",
+            "text": "",
+            "ratio": "3 / 4",
+            "columns_mobile": 3,
+            "items": "mg-ig-wb-uso-pesas.jpg|Levantamiento de pesas\nmg-ig-wb-uso-gimnasia.jpg|Gimnasia\nmg-ig-wb-uso-general.jpg|Entrenamiento general"
+          }
+        }
+      },
+      "block_order": [
+        "d-1",
+        "d-2",
+        "d-3"
       ]
     },
     "ficha": {
@@ -227,6 +290,7 @@
     "main",
     "intro",
     "tecnologias",
+    "detalle",
     "ficha",
     "cuidados",
     "related-products"
