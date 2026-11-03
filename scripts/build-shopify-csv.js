@@ -1,135 +1,149 @@
-// Genera shopify/productos.csv para Productos → Importar en el admin de Shopify.
-// Solo datos reales (infografías de la marca). Precio 0 = "Precio por WhatsApp" en el tema.
+// Genera shopify/productos-v2.csv (Productos → Importar) con el catálogo oficial v1.0.
+// Fotos desde GitHub (shopify/media): Shopify las copia a su CDN al importar.
 const fs = require('fs');
 const path = require('path');
 
-const IMG = 'https://monkey-eta-ruby.vercel.app/assets/img';
+const MEDIA = 'https://raw.githubusercontent.com/DEIV0510/monkey/main/shopify/media';
 
 const COLUMNS = [
   'Handle', 'Title', 'Body (HTML)', 'Vendor', 'Type', 'Tags', 'Published',
-  'Option1 Name', 'Option1 Value', 'Variant Price', 'Variant Inventory Policy',
-  'Variant Fulfillment Service', 'Variant Requires Shipping', 'Variant Taxable',
-  'Image Src', 'Image Position', 'Image Alt Text', 'Variant Image', 'Status',
+  'Option1 Name', 'Option1 Value', 'Option2 Name', 'Option2 Value',
+  'Variant SKU', 'Variant Grams', 'Variant Inventory Tracker', 'Variant Inventory Policy',
+  'Variant Fulfillment Service', 'Variant Price', 'Variant Requires Shipping', 'Variant Taxable',
+  'Image Src', 'Image Position', 'Image Alt Text', 'Variant Image', 'Variant Weight Unit',
+  'SEO Title', 'SEO Description', 'Status',
 ];
 
-const list = (items) => '<ul>' + items.map((i) => `<li>${i}</li>`).join('') + '</ul>';
+const p = (t) => `<p>${t}</p>`;
+const ul = (items) => '<ul>' + items.map((i) => `<li>${i}</li>`).join('') + '</ul>';
 
 const products = [
   {
-    handle: 'monkey-hand-grip',
-    title: 'Monkey Hand Grip',
+    handle: 'grips',
+    title: 'Grips',
     type: 'Grips',
     tags: 'Grips',
-    body: '<p>Hand grip fabricado en compuesto de cauchos específicamente modificados para un alto rendimiento.</p>' + list([
-      'Sistema de 4 capas de bloqueo: ejes X, Y, Z y anti-torsión',
-      '5.ª capa de confort',
-      'Capa de doble neopreno para mayor confort y evitar las talladuras durante los WODs',
-      'Herraje acerado electrosoldado para una resistencia única',
-      'Velcro 100% nylon',
-    ]),
-    option: 'Color',
-    variants: [
-      ['Amarillo', `${IMG}/grips/grip-amarillo.webp`],
-      ['Rojo', `${IMG}/grips/grip-rojo.webp`],
-      ['Rosa Neón', `${IMG}/grips/grip-rosa.webp`],
-      ['Morado', `${IMG}/grips/grip-morado.webp`],
-      ['Lavanda', `${IMG}/grips/grip-lavanda.webp`],
-      ['Celeste', `${IMG}/grips/grip-celeste.webp`],
-      ['Negro Cyan', `${IMG}/grips/grip-negro-cyan.webp`],
-      ['Verde', `${IMG}/grips/grip-verde.webp`],
+    seoTitle: 'Grips sin magnesio — Monkey Grip',
+    seoDescription: 'Grips con adherencia sin magnesio: GRIPNEX™, POLYGRIP™, FORGEX™ y MG-FUSION™. Seis colores, tallas S, M y L. $160.000 COP por par.',
+    price: 160000,
+    body: [
+      p('Entrena con Grips de Monkey Grip y disfruta de un agarre sin necesidad de magnesio. La tecnología GRIPNEX™ ofrece adherencia en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas.'),
+      p('POLYGRIP™ integra un compuesto polimérico de base caucho que combina adherencia, flexibilidad, confort y durabilidad. FORGEX™ aporta una estructura de cinco capas internas con funciones diferenciadas, diseñada para responder a las exigencias mecánicas en los ejes longitudinal, transversal y perpendicular. MG-FUSION™ es el proceso de fabricación propio desarrollado desde cero por Monkey Grip para integrar los materiales y construir el producto final.'),
+      p('Elige entre seis combinaciones de color y tres tallas según el perímetro de tu muñeca. Cada compra corresponde a un par. Precio: $160.000 COP por par, con envío pagado por separado. Garantía comercial de 3 meses.'),
+    ].join(''),
+    options: ['Color', 'Talla'],
+    colors: [
+      ['Negro + azul celeste', 'NeAzAz', 'grips-neazaz.jpg'],
+      ['Fucsia + negro', 'FuNeNe', 'grips-funene.jpg'],
+      ['Negro + blanco', 'NeBlBl', 'grips-neblbl.jpg'],
+      ['Verde menta + naranja neón', 'VmNaBl', 'grips-vmnabl.jpg'],
+      ['Blanco + fucsia', 'BlFuFu', 'grips-blfufu.jpg'],
+      ['Morado + verde neón', 'MoVnVn', 'grips-movnvn.jpg'],
     ],
-    extraImages: [[`${IMG}/grips/grip-construction.webp`, 'Construcción multicapa del Monkey Hand Grip']],
-  },
-  {
-    handle: 'ultrarope',
-    title: 'UltraRope',
-    type: 'Cuerdas',
-    tags: 'UltraRope',
-    body: '<p>Cuerda de velocidad con maniguetas 100% maquinadas.</p>' + list([
-      'Doble rodamiento flotante sin fricción',
-      'Bujes de peso para alto volumen de repeticiones',
-      'Guaya acerada recubierta en PVC',
-      'Incluye llave Bristol y repuestos',
-    ]),
-    option: 'Color',
-    variants: [['Azul'], ['Morado'], ['Rojo']],
-    images: [[`${IMG}/rope/rope-infografia.webp`, 'UltraRope en azul, morado y rojo']],
-  },
-  {
-    handle: 'monkey-backpack',
-    title: 'Monkey BackPack',
-    type: 'Backpacks',
-    tags: 'Backpack',
-    body: '<p>La Monkey BackPack está pensada para cada momento de tu día a día: no importa a qué actividad te dediques, siempre vas a poder llevar todas tus cosas de manera ordenada y segura.</p>' + list([
-      'Compartimento principal con apertura tipo baúl 100% libre',
-      'Protección posterior: compartimento para PC forrado en neopreno anti-impactos',
-      'Bolsillo superior de acceso rápido para objetos pequeños y esenciales',
-      'Bolsillo lateral expandible, compatible con termos de alto cilindraje y shakers',
-      'Bolsillo de seguridad oculto en la parte trasera, con protección antirrobo',
-      'Bolsillo secundario de profundidad total con compartimentos de malla',
-      'Exterior con velcro para parches y reatas para mosquetones y accesorios',
-      'Espacio para calzado o kit de aseo post-WOD, con barrera contra la humedad y olores',
-    ]),
-    option: 'Title',
-    variants: [['Default Title']],
-    images: [
-      [`${IMG}/backpack/backpack-hero.webp`, 'Monkey BackPack'],
-      [`${IMG}/backpack/backpack-infografia-1.webp`, 'Compartimentos de la Monkey BackPack'],
-      [`${IMG}/backpack/backpack-infografia-2.webp`, 'Organización interna de la Monkey BackPack'],
+    sizes: [['S', '001'], ['M', '002'], ['L', '003']],
+    extraImages: [
+      ['grips-infografia.jpg', 'Infografía oficial de Grips: tecnologías, colores, tallas y precio'],
+      ['grips-guia-tallas.jpg', 'Guía para medir el perímetro de la muñeca y elegir la talla'],
     ],
   },
   {
-    handle: 'rinonera-slim',
-    title: 'Riñonera Slim',
-    type: 'Riñoneras',
-    tags: 'Riñoneras',
-    body: '<p>Riñonera Slim en lona repelente al agua.</p>' + list([
-      'Bolsillo frontal y compartimento vertical de gran apertura',
-      'Compartimento superior de tamaño medio',
-      'Bolsillos laterales para monedas o llaves',
-      'Compartimento resguardado en la parte trasera',
-      'Amplio panel de velcro para personalización',
-    ]),
-    option: 'Color',
-    variants: [['Gris'], ['Verde'], ['Azul']],
-    images: [[`${IMG}/waistbag/waistbag-infografia.webp`, 'Riñonera Slim en gris, verde y azul']],
+    handle: 'monkey-wristbands',
+    title: 'Monkey Wristbands',
+    type: 'Muñequeras',
+    tags: 'Wristbands',
+    seoTitle: 'Monkey Wristbands — Muñequeras deportivas | Monkey Grip',
+    seoDescription: 'Muñequeras deportivas para controlar el sudor, con ajuste elástico y talla única. Seis colores. $40.000 COP por par.',
+    price: 40000,
+    body: [
+      p('Las Monkey Wristbands son muñequeras deportivas fabricadas con una combinación de algodón, elastómero y nylon. Están diseñadas para ayudar a controlar el sudor durante el entrenamiento, permitir limpiar la humedad de la frente y el rostro y proporcionar mayor confort en las muñecas.'),
+      p('Su tejido elástico se adapta a diferentes medidas de muñeca, con un diseño práctico para el entrenamiento.'),
+      ul([
+        'Ayudan a controlar el sudor antes de que llegue a las manos.',
+        'Permiten limpiar el sudor de la frente y el rostro.',
+        'Proporcionan confort adicional alrededor de las muñecas.',
+        'Se adaptan a distintas medidas de muñeca gracias a su elasticidad.',
+        'Incorporan una combinación de algodón, elastómero y nylon.',
+      ]),
+    ].join(''),
+    options: ['Color'],
+    colors: [
+      ['Blanco + fucsia', 'WB-BlFu-001', 'wristbands-blfu.jpg'],
+      ['Blanco + negro', 'WB-BlNe-001', 'wristbands-blne.jpg'],
+      ['Morado + verde neón', 'WB-MoVn-001', 'wristbands-movn.jpg'],
+      ['Negro + fucsia', 'WB-NeFu-001', 'wristbands-nefu.jpg'],
+      ['Negro + naranja', 'WB-NeNa-001', 'wristbands-nena.jpg'],
+      ['Negro + azul celeste', 'WB-NeAz-001', 'wristbands-neaz.jpg'],
+    ],
+    extraImages: [['wristbands-infografia.jpg', 'Infografía oficial de Monkey Wristbands']],
+  },
+  {
+    handle: 'monkey-grip-travel-bag',
+    title: 'Monkey Grip Travel Bag',
+    type: 'Maletas',
+    tags: 'Travel Bag',
+    seoTitle: 'Monkey Grip Travel Bag — Sistema MODEX™ | Monkey Grip',
+    seoDescription: 'Maleta con sistema MODEX™: 50 L base y hasta 60 L expandida, tres pods incluidos. Verde, gris, negro y morado. $460.000 COP + envío.',
+    price: 460000,
+    grams: 816, // 1.8 lb declaradas en la ficha (sin accesorios)
+    weightUnit: 'lb',
+    body: [
+      p('Una maleta para entrenar, viajar y acompañar tu día. MODEX™ Modular Expansion System combina una capacidad base declarada de 50 L con tres módulos para organizar tus esenciales, tu equipo y tu carga. Hasta 60 L de capacidad expandida.'),
+      p('Lleva tu rutina en una sola maleta. Monkey Grip Travel Bag integra el sistema MODEX™ para adaptar la organización de tus pertenencias a tus actividades. QUICK POD ofrece acceso a tus esenciales; GEAR POD ayuda a organizar implementos y accesorios; CARGO POD aporta espacio para separar calzado, ropa u otros objetos.'),
+      p('Su exterior está elaborado en lona tipo huracán repelente al agua, con malla tipo cáñamo con apresto y forro en lona tipo seda. Incorpora cremalleras militares, hebillas de policarbonato inyectado y reatas multifilamento. Disponible en verde, gris, negro y morado.'),
+      p('Incluye la maleta y los tres módulos: QUICK POD, GEAR POD y CARGO POD. Garantía de 6 meses.'),
+    ].join(''),
+    options: ['Color'],
+    colors: [
+      ['Verde', '', 'travel-bag-verde.jpg'],
+      ['Gris', '', 'travel-bag-gris.jpg'],
+      ['Negro', '', 'travel-bag-negro.jpg'],
+      ['Morado', '', 'travel-bag-morado.jpg'],
+    ],
+    extraImages: [['travel-bag-infografia.jpg', 'Infografía de la Monkey Grip Travel Bag']],
   },
 ];
 
 const rows = [];
-for (const p of products) {
-  const images = p.images
-    || p.variants.map(([value, src]) => [src, `${p.title} ${value}`]).concat(p.extraImages || []);
-  const total = Math.max(p.variants.length, images.length);
+for (const prod of products) {
+  const variants = [];
+  for (const [colorName, code, file] of prod.colors) {
+    if (prod.sizes) {
+      for (const [size, suffix] of prod.sizes) variants.push({ o1: colorName, o2: size, sku: `${code}-${suffix}`, file });
+    } else {
+      variants.push({ o1: colorName, o2: '', sku: code, file });
+    }
+  }
+  const images = prod.colors.map(([colorName, , file]) => [file, `${prod.title} ${colorName}: fotografía real`]).concat(prod.extraImages);
+  const total = Math.max(variants.length, images.length);
   for (let i = 0; i < total; i++) {
     const row = Object.fromEntries(COLUMNS.map((c) => [c, '']));
-    row.Handle = p.handle;
+    row.Handle = prod.handle;
     if (i === 0) {
       Object.assign(row, {
-        Title: p.title, 'Body (HTML)': p.body, Vendor: 'Monkey Grip', Type: p.type,
-        Tags: p.tags, Published: 'TRUE', 'Option1 Name': p.option, Status: 'active',
+        Title: prod.title, 'Body (HTML)': prod.body, Vendor: 'Monkey Grip', Type: prod.type, Tags: prod.tags,
+        Published: 'TRUE', 'SEO Title': prod.seoTitle, 'SEO Description': prod.seoDescription, Status: 'active',
       });
     }
-    const variant = p.variants[i];
-    if (variant) {
+    const v = variants[i];
+    if (v) {
       Object.assign(row, {
-        'Option1 Value': variant[0], 'Variant Price': '0', 'Variant Inventory Policy': 'continue',
-        'Variant Fulfillment Service': 'manual', 'Variant Requires Shipping': 'TRUE',
-        'Variant Taxable': 'TRUE', 'Variant Image': variant[1] || '',
+        'Option1 Name': prod.options[0], 'Option1 Value': v.o1,
+        'Option2 Name': prod.options[1] || '', 'Option2 Value': v.o2,
+        'Variant SKU': v.sku, 'Variant Grams': String(prod.grams || 0),
+        'Variant Inventory Tracker': 'shopify', 'Variant Inventory Policy': 'continue',
+        'Variant Fulfillment Service': 'manual', 'Variant Price': String(prod.price),
+        'Variant Requires Shipping': 'TRUE', 'Variant Taxable': 'TRUE',
+        'Variant Image': `${MEDIA}/${v.file}`, 'Variant Weight Unit': prod.weightUnit || 'g',
       });
     }
-    const image = images[i];
-    if (image) {
-      Object.assign(row, { 'Image Src': image[0], 'Image Position': String(i + 1), 'Image Alt Text': image[1] });
-    }
+    const img = images[i];
+    if (img) Object.assign(row, { 'Image Src': `${MEDIA}/${img[0]}`, 'Image Position': String(i + 1), 'Image Alt Text': img[1] });
     rows.push(row);
   }
 }
 
 const esc = (v) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
 const csv = [COLUMNS.join(',')].concat(rows.map((r) => COLUMNS.map((c) => esc(r[c])).join(','))).join('\n') + '\n';
-
-const outDir = path.join(__dirname, '..', 'shopify');
-fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(path.join(outDir, 'productos.csv'), csv, 'utf8');
-console.log(`${rows.length} filas, ${products.length} productos → shopify/productos.csv`);
+const out = path.join(__dirname, '..', 'shopify', 'productos-v2.csv');
+fs.writeFileSync(out, csv, 'utf8');
+console.log(`${rows.length} filas · ${products.length} productos · ${rows.filter((r) => r['Variant SKU'] || r['Option1 Value']).length} variantes → ${path.relative(process.cwd(), out)}`);
