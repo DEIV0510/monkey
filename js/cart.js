@@ -10,11 +10,19 @@
   var CATALOG = window.MONKEY_CATALOG;
   var fmt = window.formatCOP;
 
+  // Lo guardado en el navegador se valida: solo sobreviven líneas que existen en el catálogo.
   function read() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
       var items = raw ? JSON.parse(raw) : [];
-      return Array.isArray(items) ? items : [];
+      if (!Array.isArray(items)) return [];
+      return items.map(function (i) {
+        if (!i || typeof i !== 'object') return null;
+        var qty = Math.max(1, Math.min(99, parseInt(i.qty, 10) || 1));
+        var item = { productId: String(i.productId), colorCode: String(i.colorCode), sizeCode: i.sizeCode ? String(i.sizeCode) : null, qty: qty };
+        item.key = [item.productId, item.colorCode, item.sizeCode || ''].join('|');
+        return resolve(item) ? item : null;
+      }).filter(Boolean).slice(0, 50);
     } catch (e) {
       return [];
     }

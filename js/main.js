@@ -21,7 +21,7 @@
   if (loader) {
     var start = Date.now();
     var hide = function () {
-      setTimeout(function () { loader.classList.add('hidden'); }, Math.max(0, 400 - (Date.now() - start)));
+      setTimeout(function () { loader.classList.add('hidden'); }, Math.max(0, 250 - (Date.now() - start)));
     };
     if (document.readyState !== 'loading') hide();
     else document.addEventListener('DOMContentLoaded', hide);
@@ -42,17 +42,25 @@
     $$('a', mobileMenu).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   }
 
-  /* ---------- Aparición al hacer scroll ---------- */
-  var revealEls = $$('[data-reveal]');
-  if ('IntersectionObserver' in window) {
+  /* ---------- Aparición al hacer scroll ----------
+     Solo se ocultan los bloques que empiezan debajo de la pantalla; si algo falla, todo queda visible. */
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('in'); });
+    $$('[data-reveal]').forEach(function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.classList.add('pre-reveal');
+        io.observe(el);
+      }
+    });
+  }
+
+  /* srcset de una foto de producto: versión liviana + versión completa */
+  function srcsetFor(product, color) {
+    return color.thumb + ' ' + product.thumbWidth + 'w, ' + color.image + ' ' + product.imageWidth + 'w';
   }
 
   /* ---------- Enlaces de WhatsApp ---------- */
@@ -113,6 +121,7 @@
       $$('.swatch', wrap).forEach(function (s) { s.setAttribute('aria-checked', s === btn ? 'true' : 'false'); });
       target.classList.add('is-swapping');
       setTimeout(function () {
+        if (target.hasAttribute('srcset')) target.srcset = srcsetFor(product, color);
         target.src = wrap.dataset.full ? color.image : color.thumb;
         target.alt = product.name + ' ' + color.name;
         target.classList.remove('is-swapping');
@@ -195,11 +204,16 @@
       }).join('');
     }
 
-    var showImage = function (src, thumbBtn) {
-      if (mainImg.getAttribute('src') === src) return;
-      mainImg.classList.add('is-swapping');
-      setTimeout(function () { mainImg.src = src; mainImg.classList.remove('is-swapping'); }, 140);
+    var showImage = function (src, srcset, thumbBtn) {
       $$('[data-thumb]', pdp).forEach(function (b) { b.setAttribute('aria-current', b === thumbBtn ? 'true' : 'false'); });
+      if (mainImg.dataset.full === src) return;
+      mainImg.classList.add('is-swapping');
+      setTimeout(function () {
+        mainImg.srcset = srcset || '';
+        mainImg.src = src;
+        mainImg.dataset.full = src;
+        mainImg.classList.remove('is-swapping');
+      }, 140);
     };
 
     var update = function (fromColor) {
@@ -234,8 +248,9 @@
 
       if (fromColor) {
         variantThumb.dataset.src = color.image;
+        variantThumb.dataset.srcset = srcsetFor(product, color);
         $('img', variantThumb).src = color.thumb;
-        showImage(color.image, variantThumb);
+        showImage(color.image, variantThumb.dataset.srcset, variantThumb);
         try {
           var url = new URL(location.href);
           url.searchParams.set('color', color.code);
@@ -264,9 +279,14 @@
     }
 
     $$('[data-thumb]', pdp).forEach(function (btn) {
-      btn.addEventListener('click', function () { showImage(btn.dataset.src, btn); });
+      btn.addEventListener('click', function () { showImage(btn.dataset.src, btn.dataset.srcset, btn); });
     });
-    $('.gallery__main', pdp).addEventListener('click', function () { openLightbox(mainImg.src, mainImg.alt); });
+    var galleryMain = $('.gallery__main', pdp);
+    var zoomMain = function () { openLightbox(mainImg.dataset.full || mainImg.src, mainImg.alt); };
+    galleryMain.addEventListener('click', zoomMain);
+    galleryMain.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); zoomMain(); }
+    });
 
     var qtyOut = $('[data-qty-value]', pdp);
     $$('[data-qty-step]', pdp).forEach(function (btn) {
