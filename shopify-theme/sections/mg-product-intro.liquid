@@ -1,0 +1,35 @@
+{%- assign benefits = section.settings.benefits | strip | newline_to_br | split: '<br />' -%}
+<section class="color-{{ section.settings.color_scheme }} gradient mg-bordered">
+  <div class="page-width mg-section mg-section--tight mg-cols">
+    <div class="mg-prose">
+      <h2 class="mg-display mg-title">
+        {{- section.settings.title_line_1 -}}
+        {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
+      </h2>
+      <div class="mg-rte">{{ product.description }}</div>
+    </div>
+    {%- if section.settings.benefits != blank -%}
+      <ul class="mg-benefits">
+        {%- for item in benefits -%}
+          {%- assign text = item | strip -%}
+          {%- if text != blank -%}<li>{% render 'mg-icon-check' %}<span>{{ text }}</span></li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Descripción",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title_line_1", "label": "Título (blanco)" },
+    { "type": "text", "id": "title_line_2", "label": "Título (amarillo)" },
+    { "type": "textarea", "id": "benefits", "label": "Beneficios (uno por línea)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "MG · Descripción" }]
+}
+{% endschema %}

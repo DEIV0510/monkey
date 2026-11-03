@@ -1,0 +1,46 @@
+<section class="mg-trust color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <ul class="mg-trust__list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          {%- case block.settings.icon -%}
+            {%- when 'pin' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            {%- when 'layers' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          {%- endcase -%}
+          <span>{{ block.settings.text }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Franja de confianza",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Dato",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Ícono", "default": "shield", "options": [
+          { "value": "pin", "label": "Ubicación" },
+          { "value": "layers", "label": "Capas" },
+          { "value": "shield", "label": "Garantía" }
+        ] },
+        { "type": "inline_richtext", "id": "text", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "MG · Franja de confianza" }]
+}
+{% endschema %}

@@ -1,0 +1,105 @@
+{%- liquid
+  assign band_product = section.settings.product
+  assign media_image = section.settings.image
+  if media_image == blank and band_product != blank and section.settings.media_index > 0
+    assign idx = section.settings.media_index | minus: 1
+    assign media_image = band_product.media[idx].preview_image
+  endif
+-%}
+<section {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}" {% endif %}class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section mg-band{% if section.settings.reverse %} mg-band--reverse{% endif %}">
+    <div class="mg-band__copy">
+      {%- if section.settings.kicker != blank -%}<p class="mg-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2 class="mg-display mg-title">
+        {{- section.settings.title_line_1 -}}
+        {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
+      </h2>
+      {%- if section.settings.text != blank -%}<p class="mg-lead">{{ section.settings.text }}</p>{%- endif -%}
+
+      {%- assign features = section.blocks | where: 'type', 'feature' -%}
+      {%- if features.size > 0 -%}
+        <ul class="mg-feature-list">
+          {%- for block in features -%}
+            <li {{ block.shopify_attributes }}><b>{{ block.settings.label }}</b><span>{{ block.settings.text }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- assign stats = section.blocks | where: 'type', 'stat' -%}
+      {%- if stats.size > 0 -%}
+        <div class="mg-stats">
+          {%- for block in stats -%}
+            <div {{ block.shopify_attributes }}><strong>{{ block.settings.value }}</strong><span>{{ block.settings.label }}</span></div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="mg-actions">
+          <a class="button button--primary" href="{{ section.settings.button_link | default: band_product.url }}">{{ section.settings.button_label }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if media_image != blank or section.settings.asset != blank -%}
+      {%- if media_image != blank -%}
+        {%- assign zoom_src = media_image | image_url: width: 1600 -%}
+      {%- else -%}
+        {%- assign zoom_src = section.settings.asset | asset_url -%}
+      {%- endif -%}
+      <figure class="mg-figure" data-mg-zoom="{{ zoom_src }}">
+        {%- if media_image != blank -%}
+          {{ media_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '640, 900, 1400', sizes: '(min-width: 990px) 560px, 90vw', alt: media_image.alt }}
+        {%- else -%}
+          <img
+            src="{{ section.settings.asset | asset_img_url: '1024x' }}"
+            srcset="{{ section.settings.asset | asset_img_url: '640x' }} 640w, {{ section.settings.asset | asset_img_url: '1024x' }} 1024w"
+            sizes="(min-width: 990px) 560px, 90vw"
+            alt="{{ section.settings.image_alt | escape }}"
+            width="1024"
+            height="1024"
+            loading="lazy"
+          >
+        {%- endif -%}
+        {%- if section.settings.caption != blank -%}<figcaption>{{ section.settings.caption }}</figcaption>{%- endif -%}
+      </figure>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Banda de producto",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "text", "id": "kicker", "label": "Antetítulo" },
+    { "type": "text", "id": "title_line_1", "label": "Título (blanco)" },
+    { "type": "text", "id": "title_line_2", "label": "Título (amarillo)" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "button_label", "label": "Botón" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón (vacío = producto)" },
+    { "type": "header", "content": "Imagen" },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "range", "id": "media_index", "label": "O foto del producto (posición; 0 = ninguna)", "min": 0, "max": 20, "step": 1, "default": 0 },
+    { "type": "text", "id": "asset", "label": "O archivo del tema (nombre)" },
+    { "type": "text", "id": "image_alt", "label": "Texto alternativo (archivo del tema)" },
+    { "type": "text", "id": "caption", "label": "Pie de imagen" },
+    { "type": "checkbox", "id": "reverse", "label": "Imagen a la izquierda", "default": false },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Característica", "settings": [
+      { "type": "text", "id": "label", "label": "Nombre" },
+      { "type": "text", "id": "text", "label": "Descripción" }
+    ] },
+    { "type": "stat", "name": "Dato numérico", "settings": [
+      { "type": "text", "id": "value", "label": "Valor" },
+      { "type": "text", "id": "label", "label": "Etiqueta" }
+    ] }
+  ],
+  "presets": [{ "name": "MG · Banda de producto" }]
+}
+{% endschema %}

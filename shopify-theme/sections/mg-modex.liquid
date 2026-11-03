@@ -1,0 +1,89 @@
+{% comment %}
+  Sistema MODEX™ de la Travel Bag: presentación, tres pods y sistema completo.
+  Las imágenes son composiciones publicitarias conceptuales (lo exige la ficha v1.0).
+{% endcomment %}
+<section id="modex" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-band">
+      <div class="mg-band__copy">
+        <h2 class="mg-display mg-title">
+          {{- section.settings.title_line_1 -}}
+          {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
+        </h2>
+        {%- if section.settings.text != blank -%}<p class="mg-lead">{{ section.settings.text }}</p>{%- endif -%}
+        {%- assign stats = section.blocks | where: 'type', 'stat' -%}
+        {%- if stats.size > 0 -%}
+          <div class="mg-stats">
+            {%- for block in stats -%}<div {{ block.shopify_attributes }}><strong>{{ block.settings.value }}</strong><span>{{ block.settings.label }}</span></div>{%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.intro_asset != blank -%}
+        <figure class="mg-figure" data-mg-zoom="{{ section.settings.intro_asset | asset_url }}">
+          <img src="{{ section.settings.intro_asset | asset_img_url: '1024x' }}" srcset="{{ section.settings.intro_asset | asset_img_url: '640x' }} 640w, {{ section.settings.intro_asset | asset_img_url: '1024x' }} 1024w" sizes="(min-width: 990px) 560px, 90vw" alt="{{ section.settings.intro_alt | escape }}" width="1024" height="1024" loading="lazy">
+          <figcaption>Composición publicitaria conceptual. Toca para ampliar.</figcaption>
+        </figure>
+      {%- endif -%}
+    </div>
+
+    <div class="mg-pods">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'pod' -%}
+          <article class="mg-pod" {{ block.shopify_attributes }}>
+            {%- if block.settings.asset != blank -%}
+              <figure data-mg-zoom="{{ block.settings.asset | asset_url }}">
+                <img src="{{ block.settings.asset | asset_img_url: '640x' }}" srcset="{{ block.settings.asset | asset_img_url: '640x' }} 640w, {{ block.settings.asset | asset_img_url: '1024x' }} 1024w" sizes="(min-width: 990px) 400px, 90vw" alt="Composición publicitaria conceptual del {{ block.settings.title | escape }}" width="1024" height="1024" loading="lazy">
+              </figure>
+            {%- endif -%}
+            <div class="mg-pod__body">
+              <h3>{{ block.settings.title }}</h3>
+              {%- if block.settings.sub != blank -%}<p class="mg-info-card__sub">{{ block.settings.sub }}</p>{%- endif -%}
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.full_asset != blank -%}
+      <figure class="mg-figure mg-figure--full" data-mg-zoom="{{ section.settings.full_asset | asset_url }}">
+        <img src="{{ section.settings.full_asset | asset_img_url: '1024x' }}" srcset="{{ section.settings.full_asset | asset_img_url: '640x' }} 640w, {{ section.settings.full_asset | asset_img_url: '1024x' }} 1024w" sizes="(min-width: 990px) 720px, 90vw" alt="{{ section.settings.full_alt | escape }}" width="1024" height="1024" loading="lazy">
+        <figcaption>{{ section.settings.full_caption }}</figcaption>
+      </figure>
+    {%- endif -%}
+    {%- if section.settings.note != blank -%}<p class="mg-note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Sistema MODEX",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title_line_1", "label": "Título (blanco)", "default": "Sistema" },
+    { "type": "text", "id": "title_line_2", "label": "Título (amarillo)", "default": "MODEX™" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "intro_asset", "label": "Imagen de presentación (archivo del tema)", "default": "mg-modex-1.jpg" },
+    { "type": "text", "id": "intro_alt", "label": "Texto alternativo", "default": "Composición publicitaria conceptual: presentación del sistema MODEX" },
+    { "type": "text", "id": "full_asset", "label": "Imagen del sistema completo (archivo del tema)", "default": "mg-modex-5.jpg" },
+    { "type": "text", "id": "full_alt", "label": "Texto alternativo", "default": "Composición publicitaria conceptual del sistema completo" },
+    { "type": "text", "id": "full_caption", "label": "Pie de imagen", "default": "El sistema completo. Composición publicitaria conceptual." },
+    { "type": "textarea", "id": "note", "label": "Nota" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Dato numérico", "settings": [
+      { "type": "text", "id": "value", "label": "Valor" },
+      { "type": "text", "id": "label", "label": "Etiqueta" }
+    ] },
+    { "type": "pod", "name": "Pod", "settings": [
+      { "type": "text", "id": "asset", "label": "Imagen (archivo del tema)" },
+      { "type": "text", "id": "title", "label": "Nombre" },
+      { "type": "text", "id": "sub", "label": "Subtítulo" },
+      { "type": "textarea", "id": "text", "label": "Texto" }
+    ] }
+  ],
+  "presets": [{ "name": "MG · Sistema MODEX" }]
+}
+{% endschema %}

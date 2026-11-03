@@ -1,0 +1,234 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b-1": {
+          "type": "title",
+          "settings": {}
+        },
+        "b-2": {
+          "type": "text",
+          "settings": {
+            "text": "Muñequeras deportivas · Control de sudor · Ajuste adaptable · Confort",
+            "text_style": "body"
+          }
+        },
+        "b-3": {
+          "type": "price",
+          "settings": {}
+        },
+        "b-4": {
+          "type": "text",
+          "settings": {
+            "text": "COP por par (2 unidades) · Talla única, elástica · Envío no incluido: se paga por separado.",
+            "text_style": "subtitle"
+          }
+        },
+        "b-5": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "b-6": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "b-7": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "b-8": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "b-9": {
+          "type": "mg_facts",
+          "settings": {
+            "items": "Par (2 unidades) de algodón, elastómero y nylon.\nEnvío cotizado y pagado aparte."
+          }
+        }
+      },
+      "block_order": [
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5",
+        "b-6",
+        "b-7",
+        "b-8",
+        "b-9"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "intro": {
+      "type": "mg-product-intro",
+      "settings": {
+        "title_line_1": "Sudor bajo",
+        "title_line_2": "control.",
+        "benefits": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "tecnologias": {
+      "type": "mg-info-cards",
+      "settings": {
+        "title": "Tecnologías",
+        "anchor": "tecnologias",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {
+            "title": "SWEATLOCK™",
+            "sub": "Control de humedad",
+            "text": "Ayuda a absorber y retener el sudor, reduciendo la humedad que se desplaza desde los brazos hacia las manos."
+          }
+        },
+        "card-2": {
+          "type": "card",
+          "settings": {
+            "title": "FLEXFIT™",
+            "sub": "Ajuste elástico adaptable",
+            "text": "Su combinación de fibras permite adaptarse a distintas medidas de muñeca, manteniendo la comodidad durante el entrenamiento."
+          }
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {
+            "title": "SOFTGUARD™",
+            "sub": "Confort de contacto",
+            "text": "Su tejido suave aporta una capa cómoda alrededor de las muñecas durante la actividad deportiva."
+          }
+        }
+      },
+      "block_order": [
+        "card-1",
+        "card-2",
+        "card-3"
+      ]
+    },
+    "ficha": {
+      "type": "mg-columns",
+      "settings": {
+        "anchor": "ficha",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "table",
+          "settings": {
+            "column": "1",
+            "title": "Ficha técnica",
+            "big_title": true,
+            "rows": "Nombre oficial|Monkey Wristbands\nCategoría|Muñequeras deportivas\nComposición|Algodón, elastómero y nylon\nDimensiones aproximadas|10 × 5 cm\nTalla|Única, elástica\nPresentación|Par (2 unidades)\nPrecio público|$40.000 COP\nEnvío|No incluido"
+          }
+        },
+        "c-2": {
+          "type": "table",
+          "settings": {
+            "column": "2",
+            "title": "Colores",
+            "big_title": true,
+            "rows": "Blanco + fucsia|WB-BlFu-001\nBlanco + negro|WB-BlNe-001\nMorado + verde neón|WB-MoVn-001\nNegro + fucsia|WB-NeFu-001\nNegro + naranja|WB-NeNa-001\nNegro + azul celeste|WB-NeAz-001"
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2"
+      ]
+    },
+    "cuidados": {
+      "type": "mg-columns",
+      "settings": {
+        "anchor": "cuidados",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "list",
+          "settings": {
+            "column": "1",
+            "title": "Cuidados y mantenimiento",
+            "big_title": false,
+            "numbered": false,
+            "items": "Lavar con agua fría y detergente suave, a mano o en lavadora, a una temperatura máxima de 30 °C.\nLavar con colores similares.\nNo utilizar cloro ni blanqueadores.\nSecar al aire y a la sombra.\nEvitar secadora, plancha y altas temperaturas para conservar la elasticidad y los colores."
+          }
+        },
+        "c-2": {
+          "type": "text",
+          "settings": {
+            "column": "2",
+            "title": "Garantía",
+            "big_title": false,
+            "text": "<p>Las Monkey Wristbands no cuentan con garantía comercial adicional por desgaste derivado del uso. Los defectos de fabricación y las reclamaciones cubiertas por la garantía legal se atenderán conforme a la normativa vigente en Colombia.</p>"
+          }
+        },
+        "c-3": {
+          "type": "contact",
+          "settings": {
+            "column": "2",
+            "title": "",
+            "big_title": false,
+            "message": "Hola Monkey Grip, tengo una consulta sobre mis Monkey Wristbands."
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2",
+        "c-3"
+      ]
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "También te puede gustar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "tecnologias",
+    "ficha",
+    "cuidados",
+    "related-products"
+  ]
+}

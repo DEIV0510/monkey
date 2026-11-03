@@ -1,0 +1,10 @@
+{% comment %} Lista corta de datos de compra (garantía, presentación, envío). Accepts: block {% endcomment %}
+{%- assign items = block.settings.items | strip | newline_to_br | split: '<br />' -%}
+<ul class="mg-facts" {{ block.shopify_attributes }}>
+  {%- for item in items -%}
+    {%- assign text = item | strip -%}
+    {%- if text != blank -%}
+      <li>{% render 'mg-icon-check' %}<span>{{ text }}</span></li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

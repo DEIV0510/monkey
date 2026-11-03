@@ -1,0 +1,269 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b-1": {
+          "type": "title",
+          "settings": {}
+        },
+        "b-2": {
+          "type": "text",
+          "settings": {
+            "text": "Adherencia sin magnesio para tus entrenamientos en barra.",
+            "text_style": "body"
+          }
+        },
+        "b-3": {
+          "type": "price",
+          "settings": {}
+        },
+        "b-4": {
+          "type": "text",
+          "settings": {
+            "text": "COP por par · Envío no incluido: se paga por separado.",
+            "text_style": "subtitle"
+          }
+        },
+        "b-5": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "b-6": {
+          "type": "mg_size_guide",
+          "settings": {
+            "link_label": "Ver guía de tallas",
+            "title": "Guía de tallas",
+            "intro": "La talla se elige según el perímetro de la muñeca, medido en centímetros.",
+            "rows": "S|12–16 cm\nM|16–21 cm\nL|más de 21 cm",
+            "steps": "Rodea tu muñeca con una cinta métrica, lo más ajustada posible. Si no tienes una, utiliza un hilo, lana o una tira de papel y enróscala alrededor de la muñeca.\nHaz una marca que indique el perímetro de tu muñeca, ajustándola bien.\nExtiende el hilo, la lana o el papel sobre una regla y comprueba cuántos centímetros mide. Si usaste cinta métrica, lee la medida directamente.\nConsulta la tabla y selecciona la talla correspondiente.",
+            "media_index": 8
+          }
+        },
+        "b-7": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "b-8": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "b-9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "b-10": {
+          "type": "mg_facts",
+          "settings": {
+            "items": "Garantía comercial de 3 meses.\nCada compra corresponde a un par.\nEnvío cotizado y pagado aparte."
+          }
+        }
+      },
+      "block_order": [
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5",
+        "b-6",
+        "b-7",
+        "b-8",
+        "b-9",
+        "b-10"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "intro": {
+      "type": "mg-product-intro",
+      "settings": {
+        "title_line_1": "Agarre sin",
+        "title_line_2": "magnesio.",
+        "benefits": "Adherencia sin magnesio en los tipos de barra indicados.\nFlexibilidad y confort para acompañar el entrenamiento.\nProtección de las manos durante el contacto con la barra.\nDurabilidad mediante el compuesto POLYGRIP™ y la construcción FORGEX™.\nSeis combinaciones de color y tallas S, M y L.",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "tecnologias": {
+      "type": "mg-info-cards",
+      "settings": {
+        "title": "Tecnologías",
+        "anchor": "tecnologias",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {
+            "title": "GRIPNEX™",
+            "sub": "Adherencia sin magnesio",
+            "text": "Tecnología de adherencia sin magnesio en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas."
+          }
+        },
+        "card-2": {
+          "type": "card",
+          "settings": {
+            "title": "POLYGRIP™",
+            "sub": "Compuesto base caucho",
+            "text": "Compuesto polimérico de base caucho que combina adherencia, flexibilidad, confort y durabilidad."
+          }
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {
+            "title": "FORGEX™",
+            "sub": "Cinco capas internas",
+            "text": "Estructura de cinco capas internas con funciones diferenciadas para responder a las exigencias mecánicas en los ejes longitudinal, transversal y perpendicular."
+          }
+        },
+        "card-4": {
+          "type": "card",
+          "settings": {
+            "title": "MG-FUSION™",
+            "sub": "Fabricación propia",
+            "text": "Proceso de fabricación propio desarrollado desde cero por Monkey Grip, mediante el cual se integran los materiales y se construye el producto final."
+          }
+        }
+      },
+      "block_order": [
+        "card-1",
+        "card-2",
+        "card-3",
+        "card-4"
+      ]
+    },
+    "ficha": {
+      "type": "mg-columns",
+      "settings": {
+        "anchor": "ficha",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "table",
+          "settings": {
+            "column": "1",
+            "title": "Ficha técnica",
+            "big_title": true,
+            "rows": "Producto|Grips de Monkey Grip\nPresentación|Par\nCompuesto|Compuesto polimérico de base caucho POLYGRIP™\nEstructura|Cinco capas internas con funciones diferenciadas FORGEX™\nFabricación|Proceso propio MG-FUSION™ desarrollado desde cero\nAdherencia|GRIPNEX™ sin magnesio\nCompatibilidad|Barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas\nTallas|S 12–16 cm; M 16–21 cm; L más de 21 cm\nColores|Seis combinaciones oficiales\nPrecio y garantía|$160.000 COP por par; envío separado; garantía comercial de 3 meses"
+          }
+        },
+        "c-2": {
+          "type": "size_table",
+          "settings": {
+            "column": "2",
+            "title": "Guía de tallas",
+            "big_title": false,
+            "intro": "La talla se elige según el perímetro de la muñeca, medido en centímetros.",
+            "head_1": "Talla",
+            "head_2": "Perímetro de la muñeca",
+            "rows": "S|12–16 cm\nM|16–21 cm\nL|más de 21 cm"
+          }
+        },
+        "c-3": {
+          "type": "list",
+          "settings": {
+            "column": "2",
+            "title": "Cómo medir la muñeca",
+            "big_title": false,
+            "numbered": true,
+            "items": "Rodea tu muñeca con una cinta métrica, lo más ajustada posible. Si no tienes una, utiliza un hilo, lana o una tira de papel y enróscala alrededor de la muñeca.\nHaz una marca que indique el perímetro de tu muñeca, ajustándola bien.\nExtiende el hilo, la lana o el papel sobre una regla y comprueba cuántos centímetros mide. Si usaste cinta métrica, lee la medida directamente.\nConsulta la tabla y selecciona la talla correspondiente."
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2",
+        "c-3"
+      ]
+    },
+    "cuidados": {
+      "type": "mg-columns",
+      "settings": {
+        "anchor": "cuidados",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "list",
+          "settings": {
+            "column": "1",
+            "title": "Uso y cuidados",
+            "big_title": false,
+            "numbered": false,
+            "items": "Antes de cada uso, limpia la superficie de tus Grips con agua o, preferiblemente, alcohol.\nDespués de usarlos, déjalos en un lugar ventilado y libre de luz directa del sol.\nPara lavar el neopreno, utiliza únicamente jabón neutro. Nunca uses jabones con glicerina.\nLava a mano. Nunca laves los Grips en lavadora.\nSi vas a guardarlos por un tiempo prolongado, limpia los Grips con alcohol y déjalos secos en un lugar seco.\nEvita el contacto de los Grips con magnesio. Si la barra tiene magnesio, límpiala antes de usarla.\nTen precaución al soltarte de la barra, debido a su alta adherencia.\nNo es un juguete. Mantener fuera del alcance de los niños."
+          }
+        },
+        "c-2": {
+          "type": "text",
+          "settings": {
+            "column": "2",
+            "title": "Garantía comercial de 3 meses",
+            "big_title": false,
+            "text": "<p>Tus Grips cuentan con una garantía comercial de 3 meses. Si el producto presenta una falla cubierta por esta garantía, recibirás la reposición por un producto totalmente nuevo. Sigue las instrucciones de uso, cuidado y conservación para mantener el producto en buenas condiciones. Si necesitas hacer efectiva la garantía, comunícate con Monkey Grip para recibir atención de postventa y la evaluación de tu caso.</p><p>Esta garantía comercial es adicional y no limita, sustituye ni restringe los derechos legales del consumidor ni la garantía legal aplicable. La atención de una reclamación respetará esos derechos; las recomendaciones de cuidado no implican su pérdida automática.</p>"
+          }
+        },
+        "c-3": {
+          "type": "contact",
+          "settings": {
+            "column": "2",
+            "title": "",
+            "big_title": false,
+            "message": "Hola Monkey Grip, necesito ayuda con la garantía de mis Grips."
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2",
+        "c-3"
+      ]
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "También te puede gustar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "tecnologias",
+    "ficha",
+    "cuidados",
+    "related-products"
+  ]
+}

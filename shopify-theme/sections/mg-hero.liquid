@@ -1,69 +1,54 @@
 {%- liquid
-  assign hero_image = section.settings.image
-  if hero_image == blank and section.settings.product != blank
-    assign hero_image = section.settings.product.selected_or_first_available_variant.featured_image | default: section.settings.product.featured_image
+  assign product = section.settings.product
+  if product != blank
+    assign hero_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
   endif
+  assign group = 'hero-' | append: section.id
 -%}
 <section class="mg-hero color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width mg-hero__grid">
-    <div class="{% if settings.animations_reveal_on_scroll %}scroll-trigger animate--slide-in{% endif %}">
-      {%- if section.settings.kicker != blank -%}
-        <p class="mg-hero__kicker">{{ section.settings.kicker }}</p>
-      {%- endif -%}
-      <h2 class="mg-hero__title">
+    <div class="mg-hero__copy">
+      {%- if section.settings.kicker != blank -%}<p class="mg-kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2 class="mg-display mg-hero__title">
         {{- section.settings.title_line_1 -}}
-        {%- if section.settings.title_line_2 != blank -%}<span>{{ section.settings.title_line_2 }}</span>{%- endif -%}
+        {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
       </h2>
-      {%- if section.settings.text != blank -%}
-        <p class="mg-hero__sub">{{ section.settings.text }}</p>
+      {%- if section.settings.text != blank -%}<p class="mg-hero__sub">{{ section.settings.text }}</p>{%- endif -%}
+      {%- if product != blank and product.price > 0 -%}
+        <p class="mg-hero__price"><strong>{{ product.price | money_without_trailing_zeros }}</strong><span>{{ section.settings.price_note }}</span></p>
       {%- endif -%}
       <div class="mg-actions">
         {%- if section.settings.button_1_label != blank -%}
-          <a href="{{ section.settings.button_1_link | default: routes.all_products_collection_url }}" class="button button--primary">
-            {{- section.settings.button_1_label -}}
-          </a>
+          <a href="{{ section.settings.button_1_link | default: product.url }}" class="button button--primary" data-mg-link="{{ group }}">{{ section.settings.button_1_label }}</a>
         {%- endif -%}
         {%- if section.settings.button_2_label != blank -%}
-          <a href="{{ section.settings.button_2_link | default: '#categorias' }}" class="button button--secondary">
-            {{- section.settings.button_2_label -}}
-          </a>
+          <a href="{{ section.settings.button_2_link | default: '#productos' }}" class="button button--secondary">{{ section.settings.button_2_label }}</a>
         {%- endif -%}
       </div>
-      <ul class="mg-hero__trust">
-        {%- for i in (1..3) -%}
-          {%- liquid
-            assign key = 'trust_' | append: i
-            assign trust = section.settings[key]
-          -%}
-          {%- if trust != blank -%}
-            <li>{% render 'mg-icon-check' %}{{ trust }}</li>
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
     </div>
 
-    <div class="mg-hero__visual">
-      <div class="mg-hero__glow"></div>
-      <div class="mg-hero__frame">
+    <div class="mg-hero__media">
+      <div class="mg-hero__frame mg-media-light">
         {%- if hero_image != blank -%}
           {{
             hero_image
-            | image_url: width: 1100
+            | image_url: width: 1200
             | image_tag:
               loading: 'eager',
               fetchpriority: 'high',
-              widths: '400, 600, 800, 1100',
-              sizes: '(min-width: 990px) 520px, 84vw',
-              alt: hero_image.alt
+              widths: '640, 1200',
+              sizes: '(min-width: 990px) 620px, 90vw',
+              alt: product.title,
+              data-mg-target: group
           }}
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </div>
-      {%- if section.settings.tag_title != blank -%}
-        <div class="mg-hero__tag">
-          {{- section.settings.tag_title -}}
-          {%- if section.settings.tag_text != blank -%}<small>{{ section.settings.tag_text }}</small>{%- endif -%}
+      {%- if product != blank and section.settings.colors != blank -%}
+        <div class="mg-hero__colors">
+          <p>{{ section.settings.colors_label }} · <b data-mg-label="{{ group }}">{{ section.settings.colors | strip | split: '|' | first }}</b></p>
+          {% render 'mg-color-swatches', product: product, colors: section.settings.colors, group: group %}
         </div>
       {%- endif -%}
     </div>
@@ -76,22 +61,18 @@
   "tag": "div",
   "class": "section",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Antetítulo", "default": "Performance Gear · CrossFit" },
-    { "type": "text", "id": "title_line_1", "label": "Título (línea blanca)", "default": "Agarra más." },
-    { "type": "text", "id": "title_line_2", "label": "Título (línea amarilla)", "default": "Rinde más." },
-    { "type": "textarea", "id": "text", "label": "Texto", "default": "Equipamiento premium diseñado para llevar tu rendimiento al siguiente nivel." },
-    { "type": "text", "id": "button_1_label", "label": "Botón principal", "default": "Comprar ahora" },
-    { "type": "url", "id": "button_1_link", "label": "Enlace del botón principal" },
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "text", "id": "kicker", "label": "Antetítulo", "default": "Grips · Tecnología GRIPNEX™" },
+    { "type": "text", "id": "title_line_1", "label": "Título (blanco)", "default": "Adherencia extrema." },
+    { "type": "text", "id": "title_line_2", "label": "Título (amarillo)", "default": "Sin magnesio." },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "price_note", "label": "Nota junto al precio", "default": "COP por par · envío aparte" },
+    { "type": "text", "id": "button_1_label", "label": "Botón principal", "default": "Comprar Grips" },
+    { "type": "url", "id": "button_1_link", "label": "Enlace del botón principal (vacío = producto)" },
     { "type": "text", "id": "button_2_label", "label": "Botón secundario", "default": "Ver productos" },
-    { "type": "text", "id": "button_2_link", "label": "Enlace del botón secundario", "default": "#categorias" },
-    { "type": "text", "id": "trust_1", "label": "Confianza 1", "default": "Diseño premium" },
-    { "type": "text", "id": "trust_2", "label": "Confianza 2", "default": "Hecho en Colombia" },
-    { "type": "text", "id": "trust_3", "label": "Confianza 3", "default": "Pensado para atletas" },
-    { "type": "header", "content": "Imagen" },
-    { "type": "product", "id": "product", "label": "Producto (usa su foto principal)" },
-    { "type": "image_picker", "id": "image", "label": "Imagen propia (reemplaza la del producto)" },
-    { "type": "text", "id": "tag_title", "label": "Etiqueta amarilla", "default": "Monkey Hand Grip" },
-    { "type": "text", "id": "tag_text", "label": "Texto de la etiqueta", "default": "Caucho de alto rendimiento" },
+    { "type": "text", "id": "button_2_link", "label": "Enlace del botón secundario", "default": "#productos" },
+    { "type": "text", "id": "colors_label", "label": "Texto de colores", "default": "6 colores" },
+    { "type": "textarea", "id": "colors", "label": "Colores (Nombre|#hex1|#hex2 por línea)" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
   ],
   "presets": [{ "name": "MG · Hero" }]

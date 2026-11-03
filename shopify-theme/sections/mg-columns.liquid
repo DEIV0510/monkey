@@ -1,0 +1,111 @@
+{% comment %}
+  Dos columnas de contenido de producto. Bloques: tabla de datos, lista, pasos numerados,
+  texto, tabla de tallas y botones de contacto. Cada bloque elige su columna.
+{% endcomment %}
+<section {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}" {% endif %}class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section mg-cols">
+    {%- for column in (1..2) -%}
+      <div class="mg-prose">
+        {%- for block in section.blocks -%}
+          {%- assign block_column = block.settings.column | plus: 0 -%}
+          {%- if block_column == column -%}
+            <div class="mg-block" {{ block.shopify_attributes }}>
+              {%- if block.settings.title != blank -%}
+                {%- if block.settings.big_title -%}
+                  <h2 class="mg-display mg-title mg-block__big">{{ block.settings.title }}</h2>
+                {%- else -%}
+                  <h3>{{ block.settings.title }}</h3>
+                {%- endif -%}
+              {%- endif -%}
+              {%- case block.type -%}
+                {%- when 'table' -%}
+                  {%- assign rows = block.settings.rows | strip | newline_to_br | split: '<br />' -%}
+                  <table class="mg-spec-table">
+                    {%- for row in rows -%}
+                      {%- assign cells = row | strip | split: '|' -%}
+                      {%- if cells.size > 1 -%}<tr><th>{{ cells[0] | strip }}</th><td>{{ cells[1] | strip }}</td></tr>{%- endif -%}
+                    {%- endfor -%}
+                  </table>
+                {%- when 'size_table' -%}
+                  {%- if block.settings.intro != blank -%}<p>{{ block.settings.intro }}</p>{%- endif -%}
+                  {%- assign rows = block.settings.rows | strip | newline_to_br | split: '<br />' -%}
+                  <table class="mg-size-table">
+                    <tr><th>{{ block.settings.head_1 }}</th><th>{{ block.settings.head_2 }}</th></tr>
+                    {%- for row in rows -%}
+                      {%- assign cells = row | strip | split: '|' -%}
+                      {%- if cells.size > 1 -%}<tr><td>{{ cells[0] | strip }}</td><td>{{ cells[1] | strip }}</td></tr>{%- endif -%}
+                    {%- endfor -%}
+                  </table>
+                {%- when 'list' -%}
+                  {%- assign items = block.settings.items | strip | newline_to_br | split: '<br />' -%}
+                  {%- if block.settings.numbered -%}<ol class="mg-steps">{%- else -%}<ul class="mg-list">{%- endif -%}
+                  {%- for item in items -%}
+                    {%- assign text = item | strip -%}
+                    {%- if text != blank -%}<li>{{ text }}</li>{%- endif -%}
+                  {%- endfor -%}
+                  {%- if block.settings.numbered -%}</ol>{%- else -%}</ul>{%- endif -%}
+                {%- when 'text' -%}
+                  <div class="mg-rte">{{ block.settings.text }}</div>
+                {%- when 'contact' -%}
+                  {%- assign message = block.settings.message | default: settings.mg_whatsapp_message -%}
+                  <div class="mg-actions">
+                    <a class="button button--secondary" href="https://wa.me/{{ settings.mg_whatsapp_number }}?text={{ message | url_encode }}" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+                    <a class="button button--secondary" href="{{ settings.mg_instagram_url }}" target="_blank" rel="noopener">{{ settings.mg_instagram_handle }}</a>
+                  </div>
+              {%- endcase -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Columnas",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "table", "name": "Tabla de datos", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "1", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": true },
+      { "type": "textarea", "id": "rows", "label": "Filas (Dato|Valor, una por línea)" }
+    ] },
+    { "type": "size_table", "name": "Tabla de tallas", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "2", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título", "default": "Guía de tallas" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
+      { "type": "textarea", "id": "intro", "label": "Introducción" },
+      { "type": "text", "id": "head_1", "label": "Encabezado 1", "default": "Talla" },
+      { "type": "text", "id": "head_2", "label": "Encabezado 2", "default": "Perímetro de la muñeca" },
+      { "type": "textarea", "id": "rows", "label": "Filas (Talla|Medida, una por línea)" }
+    ] },
+    { "type": "list", "name": "Lista", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "1", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
+      { "type": "checkbox", "id": "numbered", "label": "Numerada", "default": false },
+      { "type": "textarea", "id": "items", "label": "Elementos (uno por línea)" }
+    ] },
+    { "type": "text", "name": "Texto", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "2", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
+      { "type": "richtext", "id": "text", "label": "Texto" }
+    ] },
+    { "type": "contact", "name": "Botones de contacto", "settings": [
+      { "type": "select", "id": "column", "label": "Columna", "default": "2", "options": [{ "value": "1", "label": "Izquierda" }, { "value": "2", "label": "Derecha" }] },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "checkbox", "id": "big_title", "label": "Título grande", "default": false },
+      { "type": "text", "id": "message", "label": "Mensaje de WhatsApp" }
+    ] }
+  ],
+  "presets": [{ "name": "MG · Columnas" }]
+}
+{% endschema %}

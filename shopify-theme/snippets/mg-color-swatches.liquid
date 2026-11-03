@@ -1,0 +1,52 @@
+{% comment %}
+  Muestras de color de un producto. Cada muestra usa la foto de la primera variante de ese color
+  y cambia la imagen objetivo, el nombre del color y los enlaces del grupo.
+
+  Accepts:
+  - product: {Object}
+  - colors: {String} líneas "Nombre del color|#hex1|#hex2"
+  - group: {String} id del grupo (imagen: data-mg-target="group", enlaces: data-mg-link="group", nombre: data-mg-label="group")
+  - small: {Boolean}
+{% endcomment %}
+{%- liquid
+  assign lines = colors | strip | newline_to_br | split: '<br />'
+  assign option_key = 'option1'
+  for option in product.options_with_values
+    if option.name == 'Color'
+      assign option_key = 'option' | append: option.position
+    endif
+  endfor
+-%}
+<div class="mg-swatches" role="radiogroup" aria-label="Color" data-mg-swatches="{{ group }}">
+  {%- for line in lines -%}
+    {%- liquid
+      assign parts = line | strip | split: '|'
+      assign color_name = parts[0] | strip
+      assign hex1 = parts[1] | default: '#3a3a3a' | strip
+      assign hex2 = parts[2] | default: hex1 | strip
+      assign color_variant = null
+      for variant in product.variants
+        if variant[option_key] == color_name
+          assign color_variant = variant
+          break
+        endif
+      endfor
+    -%}
+    {%- if color_variant -%}
+      {%- assign color_image = color_variant.featured_image | default: product.featured_image -%}
+      <button
+        type="button"
+        class="mg-swatch{% if small %} mg-swatch--sm{% endif %}"
+        role="radio"
+        aria-checked="{% if forloop.first %}true{% else %}false{% endif %}"
+        aria-label="{{ color_name | escape }}"
+        title="{{ color_name | escape }}"
+        style="background: linear-gradient(135deg, {{ hex1 }} 50%, {{ hex2 }} 50%);"
+        data-label="{{ color_name | escape }}"
+        data-url="{{ color_variant.url }}"
+        data-src="{{ color_image | image_url: width: 1200 }}"
+        data-srcset="{{ color_image | image_url: width: 640 }} 640w, {{ color_image | image_url: width: 1200 }} 1200w"
+      ></button>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

@@ -24,12 +24,20 @@
             "heading": "Contacto",
             "subtext": "<p>Calle 18A Sur #29C-55<br>Bogotá, Colombia</p><p><a href=\"https://instagram.com/monkeygripco\">@monkeygripco</a></p>"
           }
+        },
+        "mg-compras": {
+          "type": "text",
+          "settings": {
+            "heading": "Compras",
+            "subtext": "<p>El envío no está incluido en los precios: se cotiza y se paga por separado.</p>"
+          }
         }
       },
       "block_order": [
         "mg-brand",
         "mg-tienda",
-        "mg-contacto"
+        "mg-contacto",
+        "mg-compras"
       ],
       "settings": {
         "color_scheme": "scheme-1",

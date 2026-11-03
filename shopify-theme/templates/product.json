@@ -3,55 +3,44 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
+        "b-1": {
+          "type": "title",
+          "settings": {}
         },
-        "title": {
-          "type": "title"
+        "b-2": {
+          "type": "price",
+          "settings": {}
         },
-        "price": {
-          "type": "price"
-        },
-        "variant_picker": {
+        "b-3": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector"
+        "b-4": {
+          "type": "quantity_selector",
+          "settings": {}
         },
-        "buy_buttons": {
+        "b-5": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": false
           }
         },
-        "description": {
-          "type": "description"
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Compartir"
-          }
+        "b-6": {
+          "type": "description",
+          "settings": {}
         }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5",
+        "b-6"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -65,15 +54,8 @@
         "mobile_thumbnails": "show",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
-      }
-    },
-    "disclosures": {
-      "type": "disclosures",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "related-products": {
@@ -86,7 +68,7 @@
         "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
@@ -97,7 +79,6 @@
   },
   "order": [
     "main",
-    "disclosures",
     "related-products"
   ]
 }

@@ -1,30 +1,16 @@
 <section id="nosotros" class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width mg-section">
-    <div class="mg-about{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      <div>
-        {%- if section.settings.eyebrow != blank -%}<p class="mg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-        <h2 class="mg-title">{{ section.settings.title | newline_to_br }}</h2>
-        {%- if section.settings.text != blank -%}<div class="mg-lead">{{ section.settings.text }}</div>{%- endif -%}
-        {%- if section.settings.button_label != blank -%}
-          <div class="mg-actions">
-            <a
-              href="{{ section.settings.button_link | default: settings.mg_instagram_url }}"
-              class="button button--secondary"
-              {% unless section.settings.button_link != blank %}target="_blank" rel="noopener"{% endunless %}
-            >
-              {{- section.settings.button_label -}}
-            </a>
-          </div>
-        {%- endif -%}
-      </div>
-      <div class="mg-about__figure">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', sizes: '280px' }}
-        {%- else -%}
-          <img src="{{ 'mg-monkey-big.png' | asset_url }}" alt="" width="420" height="420" loading="lazy">
-        {%- endif -%}
-      </div>
+  <div class="page-width mg-section mg-about">
+    <div>
+      <h2 class="mg-display mg-title">
+        {{- section.settings.title_line_1 -}}
+        {%- if section.settings.title_line_2 != blank -%}<br><span class="mg-accent">{{ section.settings.title_line_2 }}</span>{%- endif -%}
+      </h2>
+      {%- if section.settings.text != blank -%}<div class="mg-lead">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a class="mg-link" href="{{ settings.mg_instagram_url }}" target="_blank" rel="noopener">{{ section.settings.link_label }}</a>
+      {%- endif -%}
     </div>
+    <img src="{{ 'mg-monkey.png' | asset_url }}" alt="" width="220" height="220" loading="lazy">
   </div>
 </section>
 
@@ -34,12 +20,10 @@
   "tag": "div",
   "class": "section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nuestra historia" },
-    { "type": "textarea", "id": "title", "label": "Título", "default": "Hecho en Colombia.\nListo para el mundo." },
-    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Monkey Grip crea indumentaria premium para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>" },
-    { "type": "text", "id": "button_label", "label": "Botón", "default": "Conoce nuestra historia" },
-    { "type": "url", "id": "button_link", "label": "Enlace del botón (vacío = Instagram)" },
-    { "type": "image_picker", "id": "image", "label": "Imagen (vacío = mono de la marca)" },
+    { "type": "text", "id": "title_line_1", "label": "Título (blanco)", "default": "Hecho en Colombia." },
+    { "type": "text", "id": "title_line_2", "label": "Título (amarillo)", "default": "Listo para el mundo." },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "link_label", "label": "Enlace a Instagram", "default": "Síguenos en @monkeygripco" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
   ],
   "presets": [{ "name": "MG · Nosotros" }]

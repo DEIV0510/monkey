@@ -1,0 +1,36 @@
+<section {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}" {% endif %}class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-head"><h2 class="mg-display mg-title">{{ section.settings.title }}</h2></div>
+    <div class="mg-info-grid" style="--mg-cols: {{ section.blocks.size | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        <div class="mg-info-card" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title }}</h3>
+          {%- if block.settings.sub != blank -%}<p class="mg-info-card__sub">{{ block.settings.sub }}</p>{%- endif -%}
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Información",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Tecnologías" },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Tarjeta", "settings": [
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "text", "id": "sub", "label": "Subtítulo" },
+      { "type": "textarea", "id": "text", "label": "Texto" }
+    ] }
+  ],
+  "presets": [{ "name": "MG · Información" }]
+}
+{% endschema %}

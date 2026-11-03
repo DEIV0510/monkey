@@ -210,6 +210,10 @@
                   </p>
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
+                {%- when 'mg_size_guide' -%}
+                  {% render 'mg-size-guide', block: block, section_id: section.id, product: product %}
+                {%- when 'mg_facts' -%}
+                  {% render 'mg-facts', block: block %}
                 {%- when 'collapsible_tab' -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                     <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -974,6 +978,27 @@
           "label": "t:sections.custom-liquid.settings.custom_liquid.label",
           "info": "t:sections.custom-liquid.settings.custom_liquid.info"
         }
+      ]
+    },
+    {
+      "type": "mg_size_guide",
+      "name": "MG · Guía de tallas",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "link_label", "label": "Texto del enlace", "default": "Ver guía de tallas" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Guía de tallas" },
+        { "type": "textarea", "id": "intro", "label": "Introducción", "default": "La talla se elige según el perímetro de la muñeca, medido en centímetros." },
+        { "type": "textarea", "id": "rows", "label": "Tabla (Talla|Medida, una por línea)", "default": "S|12–16 cm\nM|16–21 cm\nL|más de 21 cm" },
+        { "type": "textarea", "id": "steps", "label": "Pasos para medir (uno por línea)" },
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "range", "id": "media_index", "label": "O foto del producto (posición; 0 = ninguna)", "min": 0, "max": 20, "step": 1, "default": 0 }
+      ]
+    },
+    {
+      "type": "mg_facts",
+      "name": "MG · Datos de compra",
+      "settings": [
+        { "type": "textarea", "id": "items", "label": "Datos (uno por línea)" }
       ]
     },
     {

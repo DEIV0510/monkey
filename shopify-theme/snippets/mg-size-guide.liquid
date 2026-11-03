@@ -1,0 +1,105 @@
+{% comment %}
+  Enlace "Ver guía de tallas" + ventana con la tabla oficial, los pasos para medir y la imagen.
+  Accepts: block, section_id, product
+{% endcomment %}
+{%- liquid
+  assign rows = block.settings.rows | newline_to_br | split: '<br />'
+  assign steps = block.settings.steps | strip | newline_to_br | split: '<br />'
+  assign guide_image = block.settings.image
+  if guide_image == blank and block.settings.media_index > 0
+    assign idx = block.settings.media_index | minus: 1
+    assign guide_image = product.media[idx].preview_image
+  endif
+  assign dialog_id = 'MgSizeGuide-' | append: section_id
+-%}
+<div class="mg-size-guide" {{ block.shopify_attributes }}>
+  <p class="mg-size-hint" role="status">Elige tu talla para continuar.</p>
+  <button type="button" class="mg-size-guide__link" data-mg-dialog="{{ dialog_id }}">
+    {{- block.settings.link_label -}}
+  </button>
+  <dialog id="{{ dialog_id }}" class="mg-dialog" aria-labelledby="{{ dialog_id }}-title">
+    <div class="mg-dialog__panel">
+      <form method="dialog">
+        <button class="mg-dialog__close" aria-label="Cerrar guía de tallas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </form>
+      <h2 id="{{ dialog_id }}-title" class="mg-dialog__title">{{ block.settings.title }}</h2>
+      <div class="mg-dialog__grid{% if guide_image == blank %} mg-dialog__grid--single{% endif %}">
+        <div class="mg-prose">
+          {%- if block.settings.intro != blank -%}<p>{{ block.settings.intro }}</p>{%- endif -%}
+          <table class="mg-size-table">
+            <tr><th>Talla</th><th>Perímetro de la muñeca</th></tr>
+            {%- for row in rows -%}
+              {%- assign cells = row | strip | split: '|' -%}
+              {%- if cells.size > 1 -%}
+                <tr><td>{{ cells[0] | strip }}</td><td>{{ cells[1] | strip }}</td></tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </table>
+          {%- if block.settings.steps != blank -%}
+            <ol class="mg-steps">
+              {%- for step in steps -%}
+                {%- assign text = step | strip -%}
+                {%- if text != blank -%}<li>{{ text }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ol>
+          {%- endif -%}
+        </div>
+        {%- if guide_image != blank -%}
+          {{ guide_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 900', sizes: '(min-width: 750px) 360px, 90vw', alt: guide_image.alt }}
+        {%- endif -%}
+      </div>
+    </div>
+  </dialog>
+</div>
+<script>
+  /* La ficha de Grips exige elegir la talla a mano: Shopify deja la primera preseleccionada,
+     así que la compra queda bloqueada hasta que el cliente toque una talla (opción «Talla»). */
+  (function () {
+    var body = document.body;
+    var sizeFieldset = function (input) {
+      var fieldset = input.closest('fieldset');
+      var legend = fieldset && fieldset.querySelector('legend');
+      return legend && /talla/i.test(legend.textContent) ? fieldset : null;
+    };
+    body.classList.add('mg-size-pending');
+    document.addEventListener('change', function (event) {
+      if (event.target.matches && event.target.matches('input[type="radio"]') && sizeFieldset(event.target)) {
+        body.classList.remove('mg-size-pending');
+      }
+    }, true);
+    document.addEventListener('click', function (event) {
+      var label = event.target.closest && event.target.closest('variant-selects label');
+      if (label) {
+        var input = document.getElementById(label.getAttribute('for'));
+        if (input && sizeFieldset(input) && input.checked) body.classList.remove('mg-size-pending');
+      }
+      if (body.classList.contains('mg-size-pending') && event.target.closest && event.target.closest('.product-form__submit, .shopify-payment-button')) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var hint = document.querySelector('.mg-size-hint');
+        if (hint) hint.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, true);
+    document.addEventListener('submit', function (event) {
+      if (body.classList.contains('mg-size-pending') && event.target.matches('form[data-type="add-to-cart-form"]')) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }, true);
+  })();
+
+  if (!window.mgDialogsReady) {
+    window.mgDialogsReady = true;
+    document.addEventListener('click', function (event) {
+      var opener = event.target.closest('[data-mg-dialog]');
+      if (opener) {
+        var dialog = document.getElementById(opener.dataset.mgDialog);
+        if (dialog && dialog.showModal) dialog.showModal();
+        return;
+      }
+      if (event.target.classList && event.target.classList.contains('mg-dialog')) event.target.close();
+    });
+  }
+</script>

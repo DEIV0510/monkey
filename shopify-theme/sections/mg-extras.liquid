@@ -1,0 +1,43 @@
+<section id="{{ section.settings.anchor | default: 'mas' }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-head">
+      <h2 class="mg-display mg-title">{{ section.settings.title }}</h2>
+      {%- if section.settings.text != blank -%}<p class="mg-lead">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="mg-extras">
+      {%- for product in section.settings.products -%}
+        {%- assign message = 'Hola Monkey Grip, quiero información sobre ' | append: product.title | append: '.' -%}
+        <article class="mg-extra">
+          {%- if product.featured_image != blank -%}
+            {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', sizes: '160px', alt: product.title }}
+          {%- endif -%}
+          <div>
+            <h3>{{ product.title }}</h3>
+            {%- assign note = product.description | strip_html | truncatewords: 12 -%}
+            <p>{{ note }}</p>
+            <div class="mg-extra__links">
+              <a class="mg-link" href="{{ product.url }}">Ver producto</a>
+              <a class="mg-link" href="https://wa.me/{{ settings.mg_whatsapp_number }}?text={{ message | url_encode }}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Más equipamiento",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Más equipamiento" },
+    { "type": "text", "id": "text", "label": "Texto", "default": "Consulta precio y disponibilidad por WhatsApp." },
+    { "type": "product_list", "id": "products", "label": "Productos", "limit": 6 },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "mas" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "MG · Más equipamiento" }]
+}
+{% endschema %}

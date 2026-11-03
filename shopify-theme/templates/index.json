@@ -3,209 +3,145 @@
     "hero": {
       "type": "mg-hero",
       "settings": {
-        "kicker": "Performance Gear · CrossFit",
-        "title_line_1": "Agarra más.",
-        "title_line_2": "Rinde más.",
-        "text": "Equipamiento premium diseñado para llevar tu rendimiento al siguiente nivel. Fabricado por colombianos para los CrossFitters del mundo.",
-        "button_1_label": "Comprar ahora",
-        "button_1_link": "shopify://collections/all",
+        "product": "grips",
+        "kicker": "Grips · Tecnología GRIPNEX™",
+        "title_line_1": "Adherencia extrema.",
+        "title_line_2": "Sin magnesio.",
+        "text": "Agarre en barras lisas, corrugadas, pintadas, lacadas, con pintura electrostática y oxidadas.",
+        "price_note": "COP por par · envío aparte",
+        "button_1_label": "Comprar Grips",
         "button_2_label": "Ver productos",
-        "button_2_link": "#categorias",
-        "trust_1": "Diseño premium",
-        "trust_2": "Hecho en Colombia",
-        "trust_3": "Pensado para atletas",
-        "product": "monkey-hand-grip",
-        "tag_title": "Monkey Hand Grip",
-        "tag_text": "Caucho de alto rendimiento",
+        "button_2_link": "#productos",
+        "colors_label": "6 colores",
+        "colors": "Negro + azul celeste|#111111|#3cb7ee\nFucsia + negro|#ff2f8e|#111111\nNegro + blanco|#111111|#ffffff\nVerde menta + naranja neón|#7fdcd2|#ff7a1a\nBlanco + fucsia|#ffffff|#ff2f8e\nMorado + verde neón|#5b22b8|#a4ff1f",
         "color_scheme": "scheme-1"
       }
     },
-    "categorias": {
-      "type": "mg-categories",
+    "trust": {
+      "type": "mg-trust",
       "settings": {
-        "eyebrow": "Catálogo",
-        "title": "Equipamiento para\nrendir al máximo",
         "color_scheme": "scheme-1"
-      },
-      "blocks": {
-        "category-1": {
-          "type": "category",
-          "settings": {
-            "product": "monkey-hand-grip",
-            "title": "Grips",
-            "text": "Domina cada repetición",
-            "link_label": "Ver colección",
-            "image_position": "object-position: center"
-          }
-        },
-        "category-2": {
-          "type": "category",
-          "settings": {
-            "product": "ultrarope",
-            "title": "UltraRope",
-            "text": "Velocidad sin fricción",
-            "link_label": "Ver colección",
-            "image_position": "object-position: 15% center"
-          }
-        },
-        "category-3": {
-          "type": "category",
-          "settings": {
-            "product": "monkey-backpack",
-            "title": "Backpack",
-            "text": "Todo tu equipo, un lugar",
-            "link_label": "Ver colección",
-            "image_position": "object-position: center"
-          }
-        },
-        "category-4": {
-          "type": "category",
-          "settings": {
-            "product": "rinonera-slim",
-            "title": "Riñoneras",
-            "text": "Rendimiento que va contigo",
-            "link_label": "Ver colección",
-            "image_position": "object-position: 15% center"
-          }
-        }
-      },
-      "block_order": [
-        "category-1",
-        "category-2",
-        "category-3",
-        "category-4"
-      ]
-    },
-    "grips": {
-      "type": "mg-grip-showcase",
-      "settings": {
-        "product": "monkey-hand-grip",
-        "option_name": "Color",
-        "color_map": "Amarillo:#FFEC00\nRojo:#E7302B\nRosa Neón:#FF3D68\nMorado:#5B2E8C\nLavanda:#B7A6DE\nCeleste:#7FD6EA\nNegro Cyan:#22B8D6\nVerde:#79C143",
-        "eyebrow": "Producto insignia",
-        "title": "Tu agarre no\ndebería ser el\nlímite.",
-        "text": "Hand grips fabricados en compuesto de caucho específicamente modificado para un alto rendimiento.",
-        "button_label": "Ver Grips",
-        "anchor": "grips",
-        "color_scheme": "scheme-1"
-      },
-      "blocks": {
-        "feature-1": {
-          "type": "feature",
-          "settings": {
-            "text": "Sistema multicapa de bloqueo"
-          }
-        },
-        "feature-2": {
-          "type": "feature",
-          "settings": {
-            "text": "Doble neopreno de confort"
-          }
-        },
-        "feature-3": {
-          "type": "feature",
-          "settings": {
-            "text": "Herraje acerado electrosoldado"
-          }
-        },
-        "feature-4": {
-          "type": "feature",
-          "settings": {
-            "text": "Velcro 100% nylon"
-          }
-        }
-      },
-      "block_order": [
-        "feature-1",
-        "feature-2",
-        "feature-3",
-        "feature-4"
-      ]
-    },
-    "tecnologia": {
-      "type": "mg-tech",
-      "settings": {
-        "eyebrow": "Ingeniería del agarre",
-        "title": "Diseñado para\nresistir.",
-        "product": "monkey-hand-grip",
-        "image_index": 9,
-        "color_scheme": "scheme-2"
       },
       "blocks": {
         "item-1": {
           "type": "item",
           "settings": {
-            "title": "Agarre seguro",
-            "text": "Sistema de bloqueo multicapa en ejes X, Y, Z y anti-torsión."
+            "icon": "pin",
+            "text": "<strong>Hecho en Colombia</strong> por Monkey Grip"
           }
         },
         "item-2": {
           "type": "item",
           "settings": {
-            "title": "Máxima comodidad",
-            "text": "Doble capa de neopreno que evita talladuras durante el WOD."
+            "icon": "layers",
+            "text": "Proceso de fabricación propio <strong>MG-FUSION™</strong>"
           }
         },
         "item-3": {
           "type": "item",
           "settings": {
-            "title": "Materiales resistentes",
-            "text": "Herraje acerado electrosoldado y velcro 100% nylon."
-          }
-        },
-        "item-4": {
-          "type": "item",
-          "settings": {
-            "title": "Alto rendimiento",
-            "text": "Compuesto de caucho modificado para atletas exigentes."
+            "icon": "shield",
+            "text": "<strong>Garantía comercial de 3 meses</strong> en Grips"
           }
         }
       },
       "block_order": [
         "item-1",
         "item-2",
-        "item-3",
-        "item-4"
+        "item-3"
       ]
     },
-    "backpack": {
-      "type": "mg-split",
+    "productos": {
+      "type": "mg-products",
       "settings": {
-        "product": "monkey-backpack",
-        "image_index": 1,
-        "show_gallery": true,
-        "reverse": false,
-        "eyebrow": "Equipamiento diario",
-        "title": "Todo tu equipo.\nUn solo lugar.",
-        "text": "Diseñada para acompañarte dentro y fuera del box.",
-        "colors": "",
-        "button_label": "Ver Backpack",
-        "anchor": "backpack",
+        "title": "Equipamiento para\nrendir al máximo",
+        "text": "Precios por producto. El envío se cotiza y se paga aparte.",
+        "anchor": "productos",
         "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "product-1": {
+          "type": "product",
+          "settings": {
+            "product": "grips",
+            "tagline": "Adherencia sin magnesio. Tallas S, M y L.",
+            "price_note": "COP por par",
+            "colors": "Negro + azul celeste|#111111|#3cb7ee\nFucsia + negro|#ff2f8e|#111111\nNegro + blanco|#111111|#ffffff\nVerde menta + naranja neón|#7fdcd2|#ff7a1a\nBlanco + fucsia|#ffffff|#ff2f8e\nMorado + verde neón|#5b22b8|#a4ff1f",
+            "note": "",
+            "media_bg": "light",
+            "button_label": "Ver y comprar"
+          }
+        },
+        "product-2": {
+          "type": "product",
+          "settings": {
+            "product": "monkey-wristbands",
+            "tagline": "Control de sudor. Par, talla única.",
+            "price_note": "COP por par",
+            "colors": "Blanco + fucsia|#ffffff|#ff2f8e\nBlanco + negro|#ffffff|#111111\nMorado + verde neón|#5b22b8|#a4ff1f\nNegro + fucsia|#111111|#ff2f8e\nNegro + naranja|#111111|#ff7a1a\nNegro + azul celeste|#111111|#3cb7ee",
+            "note": "",
+            "media_bg": "light",
+            "button_label": "Ver y comprar"
+          }
+        },
+        "product-3": {
+          "type": "product",
+          "settings": {
+            "product": "monkey-grip-travel-bag",
+            "tagline": "50 L base, hasta 60 L. Incluye 3 pods.",
+            "price_note": "COP + envío",
+            "colors": "",
+            "note": "Verde · Gris · Negro · Morado",
+            "media_bg": "white",
+            "button_label": "Ver y comprar"
+          }
+        }
+      },
+      "block_order": [
+        "product-1",
+        "product-2",
+        "product-3"
+      ]
+    },
+    "tecnologias": {
+      "type": "mg-band",
+      "settings": {
+        "product": "grips",
+        "title_line_1": "Cuatro tecnologías.",
+        "title_line_2": "Un agarre.",
+        "button_label": "Ver ficha de Grips",
+        "media_index": 7,
+        "caption": "Infografía oficial de Grips. Toca para ampliar.",
+        "reverse": false,
+        "color_scheme": "scheme-2"
       },
       "blocks": {
         "feature-1": {
           "type": "feature",
           "settings": {
-            "text": "Compartimento principal tipo baúl, 100% libre"
+            "label": "GRIPNEX™",
+            "text": "Adherencia sin magnesio en barras lisas, corrugadas, pintadas, lacadas, electrostáticas y oxidadas."
           }
         },
         "feature-2": {
           "type": "feature",
           "settings": {
-            "text": "Bolsillo lateral expandible para termos y shakers"
+            "label": "POLYGRIP™",
+            "text": "Compuesto polimérico de base caucho: adherencia, flexibilidad, confort y durabilidad."
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
-            "text": "Bolsillo de seguridad oculto para objetos de valor"
+            "label": "FORGEX™",
+            "text": "Estructura de cinco capas internas con funciones diferenciadas."
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
-            "text": "Doble organización interna: cremallera + malla"
+            "label": "MG-FUSION™",
+            "text": "Proceso de fabricación propio, desarrollado desde cero por Monkey Grip."
           }
         }
       },
@@ -216,199 +152,89 @@
         "feature-4"
       ]
     },
-    "rinoneras": {
-      "type": "mg-split",
+    "travel_bag": {
+      "type": "mg-band",
       "settings": {
-        "product": "rinonera-slim",
-        "image_index": 1,
-        "show_gallery": false,
+        "product": "monkey-grip-travel-bag",
+        "kicker": "Monkey Grip Travel Bag · Sistema MODEX™",
+        "title_line_1": "Adapta. Organiza.",
+        "title_line_2": "Expande.",
+        "text": "Una maleta para entrenar, viajar y acompañar tu día, con tres módulos para tus esenciales, tu equipo y tu carga.",
+        "button_label": "Ver Travel Bag",
+        "asset": "mg-modex-1.jpg",
+        "image_alt": "Composición publicitaria conceptual del sistema MODEX de la Monkey Grip Travel Bag",
+        "caption": "Composición conceptual del sistema MODEX™.",
         "reverse": true,
-        "eyebrow": "Lifestyle · Urbano",
-        "title": "Rendimiento que\nva contigo.",
-        "text": "Riñonera Slim en lona repelente al agua, pensada para tu día a día dentro y fuera del box.",
-        "colors": "Gris:#8a8f94, Verde:#5c6b3f, Azul:#3b4a5a",
-        "button_label": "Ver Riñoneras",
-        "anchor": "rinoneras",
-        "color_scheme": "scheme-2"
-      },
-      "blocks": {
-        "feature-1": {
-          "type": "feature",
-          "settings": {
-            "text": "Bolsillo frontal y compartimento vertical de gran apertura"
-          }
-        },
-        "feature-2": {
-          "type": "feature",
-          "settings": {
-            "text": "Bolsillos laterales para monedas o llaves"
-          }
-        },
-        "feature-3": {
-          "type": "feature",
-          "settings": {
-            "text": "Compartimento resguardado en la parte trasera"
-          }
-        },
-        "feature-4": {
-          "type": "feature",
-          "settings": {
-            "text": "Lona repelente al agua"
-          }
-        }
-      },
-      "block_order": [
-        "feature-1",
-        "feature-2",
-        "feature-3",
-        "feature-4"
-      ]
-    },
-    "ultrarope": {
-      "type": "mg-split",
-      "settings": {
-        "product": "ultrarope",
-        "image_index": 1,
-        "show_gallery": false,
-        "reverse": false,
-        "eyebrow": "Speed Rope",
-        "title": "Velocidad que\nno se detiene.",
-        "text": "Maniguetas 100% maquinadas para dobles unders sin fricción, WOD tras WOD.",
-        "colors": "Azul:#2452c8, Morado:#8a2be2, Rojo:#d6231e",
-        "button_label": "Ver UltraRope",
-        "anchor": "ultrarope",
         "color_scheme": "scheme-1"
       },
       "blocks": {
-        "feature-1": {
-          "type": "feature",
+        "stat-1": {
+          "type": "stat",
           "settings": {
-            "text": "Doble rodamiento flotante sin fricción"
+            "value": "50 L",
+            "label": "Capacidad base"
           }
         },
-        "feature-2": {
-          "type": "feature",
+        "stat-2": {
+          "type": "stat",
           "settings": {
-            "text": "Guaya acerada recubierta en PVC"
+            "value": "60 L",
+            "label": "Expandida"
           }
         },
-        "feature-3": {
-          "type": "feature",
+        "stat-3": {
+          "type": "stat",
           "settings": {
-            "text": "Bujes de peso para alto volumen de repeticiones"
+            "value": "3 pods",
+            "label": "Incluidos"
           }
         },
-        "feature-4": {
-          "type": "feature",
+        "stat-4": {
+          "type": "stat",
           "settings": {
-            "text": "Incluye llave Bristol y repuestos"
+            "value": "6 meses",
+            "label": "Garantía"
           }
         }
       },
       "block_order": [
-        "feature-1",
-        "feature-2",
-        "feature-3",
-        "feature-4"
+        "stat-1",
+        "stat-2",
+        "stat-3",
+        "stat-4"
       ]
     },
-    "porque": {
-      "type": "mg-why",
+    "mas": {
+      "type": "mg-extras",
       "settings": {
-        "eyebrow": "Por qué Monkey Grip",
-        "title": "Hecho para atletas\nque exigen más.",
+        "title": "Más equipamiento",
+        "text": "Consulta precio y disponibilidad por WhatsApp.",
+        "products": [
+          "rinonera-slim",
+          "ultrarope"
+        ],
+        "anchor": "mas",
         "color_scheme": "scheme-2"
-      },
-      "blocks": {
-        "reason-1": {
-          "type": "reason",
-          "settings": {
-            "icon": "spark",
-            "title": "Diseño premium",
-            "text": "Hecho para atletas exigentes."
-          }
-        },
-        "reason-2": {
-          "type": "reason",
-          "settings": {
-            "icon": "layers",
-            "title": "Hecho en Colombia",
-            "text": "Diseñado y elaborado localmente."
-          }
-        },
-        "reason-3": {
-          "type": "reason",
-          "settings": {
-            "icon": "pulse",
-            "title": "Alto rendimiento",
-            "text": "Pensado para acompañar tus entrenamientos."
-          }
-        },
-        "reason-4": {
-          "type": "reason",
-          "settings": {
-            "icon": "users",
-            "title": "Comunidad Monkey",
-            "text": "Para quienes buscan superar sus límites."
-          }
-        }
-      },
-      "block_order": [
-        "reason-1",
-        "reason-2",
-        "reason-3",
-        "reason-4"
-      ]
+      }
     },
     "nosotros": {
       "type": "mg-about",
       "settings": {
-        "eyebrow": "Nuestra historia",
-        "title": "Hecho en Colombia.\nListo para el mundo.",
-        "text": "<p>Monkey Grip crea indumentaria premium para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>",
-        "button_label": "Conoce nuestra historia",
-        "color_scheme": "scheme-1"
-      }
-    },
-    "instagram": {
-      "type": "mg-instagram",
-      "settings": {
-        "eyebrow": "Comunidad",
-        "title": "Sigue el\nmovimiento.",
-        "products": [
-          "monkey-hand-grip",
-          "monkey-backpack",
-          "ultrarope",
-          "rinonera-slim"
-        ],
-        "limit": 6,
-        "per_product": 2,
-        "color_scheme": "scheme-1"
-      }
-    },
-    "final": {
-      "type": "mg-final-cta",
-      "settings": {
-        "eyebrow": "Monkey Grip",
-        "title": "¿Listo para mejorar\ntu rendimiento?",
-        "text": "Equipamiento premium hecho en Colombia, diseñado para atletas que no negocian su rendimiento.",
-        "button_label": "Comprar ahora",
-        "button_link": "shopify://collections/all",
+        "title_line_1": "Hecho en Colombia.",
+        "title_line_2": "Listo para el mundo.",
+        "text": "<p>Monkey Grip diseña y fabrica equipamiento para CrossFitters que exigen más de su equipo. Diseñado y elaborado por colombianos para atletas de todo el mundo.</p>",
+        "link_label": "Síguenos en @monkeygripco",
         "color_scheme": "scheme-1"
       }
     }
   },
   "order": [
     "hero",
-    "categorias",
-    "grips",
-    "tecnologia",
-    "backpack",
-    "rinoneras",
-    "ultrarope",
-    "porque",
-    "nosotros",
-    "instagram",
-    "final"
+    "trust",
+    "productos",
+    "tecnologias",
+    "travel_bag",
+    "mas",
+    "nosotros"
   ]
 }

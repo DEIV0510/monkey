@@ -1,0 +1,84 @@
+<section id="{{ section.settings.anchor | default: 'productos' }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width mg-section">
+    <div class="mg-head">
+      <h2 class="mg-display mg-title">{{ section.settings.title | newline_to_br }}</h2>
+      {%- if section.settings.text != blank -%}<p class="mg-lead">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="mg-cards">
+      {%- for block in section.blocks -%}
+        {%- assign product = block.settings.product -%}
+        {%- if product != blank -%}
+          {%- liquid
+            assign group = 'card-' | append: block.id
+            assign card_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+          -%}
+          <article class="mg-card" {{ block.shopify_attributes }}>
+            <a class="mg-card__media mg-media-{{ block.settings.media_bg }}" href="{{ product.url }}" data-mg-link="{{ group }}">
+              {%- if card_image != blank -%}
+                {{
+                  card_image
+                  | image_url: width: 1200
+                  | image_tag: loading: 'lazy', widths: '480, 640, 900', sizes: '(min-width: 990px) 400px, (min-width: 750px) 45vw, 90vw', alt: product.title, data-mg-target: group
+                }}
+              {%- endif -%}
+            </a>
+            <div class="mg-card__body">
+              <h3 class="mg-card__name">{{ product.title }}</h3>
+              {%- if block.settings.tagline != blank -%}<p class="mg-card__tag">{{ block.settings.tagline }}</p>{%- endif -%}
+              <p class="mg-card__price">
+                {%- if product.price > 0 -%}
+                  {{ product.price | money_without_trailing_zeros }} <small>{{ block.settings.price_note }}</small>
+                {%- else -%}
+                  <span class="mg-price-ask">Precio por WhatsApp</span>
+                {%- endif -%}
+              </p>
+              <div class="mg-card__foot">
+                {%- if block.settings.colors != blank -%}
+                  {% render 'mg-color-swatches', product: product, colors: block.settings.colors, group: group, small: true %}
+                {%- elsif block.settings.note != blank -%}
+                  <p class="mg-small">{{ block.settings.note }}</p>
+                {%- endif -%}
+                <a class="button button--primary button--full-width" href="{{ product.url }}" data-mg-link="{{ group }}">{{ block.settings.button_label }}</a>
+              </div>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MG · Productos",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Equipamiento para\nrendir al máximo" },
+    { "type": "text", "id": "text", "label": "Texto", "default": "Precios por producto. El envío se cotiza y se paga aparte." },
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "productos" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Producto",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "text", "id": "tagline", "label": "Frase corta" },
+        { "type": "text", "id": "price_note", "label": "Nota del precio", "default": "COP por par" },
+        { "type": "textarea", "id": "colors", "label": "Colores (Nombre|#hex1|#hex2 por línea)" },
+        { "type": "text", "id": "note", "label": "Texto si no hay muestras de color" },
+        { "type": "select", "id": "media_bg", "label": "Fondo de la foto", "default": "light", "options": [
+          { "value": "light", "label": "Gris claro" },
+          { "value": "white", "label": "Blanco" },
+          { "value": "dark", "label": "Negro" }
+        ] },
+        { "type": "text", "id": "button_label", "label": "Botón", "default": "Ver y comprar" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "MG · Productos" }]
+}
+{% endschema %}

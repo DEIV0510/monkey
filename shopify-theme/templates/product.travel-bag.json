@@ -1,0 +1,257 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b-1": {
+          "type": "title",
+          "settings": {}
+        },
+        "b-2": {
+          "type": "text",
+          "settings": {
+            "text": "Adapta. Organiza. Expande.",
+            "text_style": "body"
+          }
+        },
+        "b-3": {
+          "type": "price",
+          "settings": {}
+        },
+        "b-4": {
+          "type": "text",
+          "settings": {
+            "text": "COP + envío. Incluye la maleta y los tres módulos: QUICK POD, GEAR POD y CARGO POD.",
+            "text_style": "subtitle"
+          }
+        },
+        "b-5": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "b-6": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "b-7": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "b-8": {
+          "type": "mg_facts",
+          "settings": {
+            "items": "Incluye 3 pods.\nGarantía de 6 meses.\nEnvío adicional: se informa antes de finalizar la compra."
+          }
+        }
+      },
+      "block_order": [
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5",
+        "b-6",
+        "b-7",
+        "b-8"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "intro": {
+      "type": "mg-product-intro",
+      "settings": {
+        "title_line_1": "Un solo equipo.",
+        "title_line_2": "Todas tus actividades.",
+        "benefits": "Organiza por actividad: distribuye esenciales, implementos y carga en tres módulos.\nAdapta tu capacidad: 50 L base y hasta 60 L expandida, según las capacidades declaradas.\nMantén tus esenciales a mano con QUICK POD.\nSepara calzado, ropa u otros objetos con CARGO POD.\nAcompaña entrenamiento, viajes, trabajo y actividades del día a día.",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "modex": {
+      "type": "mg-modex",
+      "settings": {
+        "title_line_1": "Sistema",
+        "title_line_2": "MODEX™",
+        "text": "Modular Expansion System: acceso rápido, organización y carga expandible. Los tres pods están incluidos en el precio.",
+        "intro_asset": "mg-modex-1.jpg",
+        "intro_alt": "Composición publicitaria conceptual: presentación del sistema MODEX",
+        "full_asset": "mg-modex-5.jpg",
+        "full_alt": "Composición publicitaria conceptual del sistema completo: maleta con QUICK POD, GEAR POD y CARGO POD",
+        "full_caption": "El sistema completo. Composición publicitaria conceptual.",
+        "note": "Las imágenes del sistema MODEX™ son composiciones publicitarias conceptuales: sus detalles ilustrados no muestran la construcción real. Los objetos de ambientación (calzado, celular, audífonos, grips, sogas, recipientes y otros accesorios) no se incluyen en la compra.",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "m-1": {
+          "type": "stat",
+          "settings": {
+            "value": "50 L",
+            "label": "Capacidad base"
+          }
+        },
+        "m-2": {
+          "type": "stat",
+          "settings": {
+            "value": "60 L",
+            "label": "Expandida"
+          }
+        },
+        "m-3": {
+          "type": "stat",
+          "settings": {
+            "value": "3 pods",
+            "label": "Incluidos"
+          }
+        },
+        "m-4": {
+          "type": "stat",
+          "settings": {
+            "value": "6 meses",
+            "label": "Garantía"
+          }
+        },
+        "m-5": {
+          "type": "pod",
+          "settings": {
+            "asset": "mg-modex-2.jpg",
+            "title": "QUICK POD™",
+            "sub": "Acceso rápido. Todo a la mano.",
+            "text": "Módulo para organizar los esenciales que necesitas tener al alcance: celular, llaves, documentos, audífonos y snacks."
+          }
+        },
+        "m-6": {
+          "type": "pod",
+          "settings": {
+            "asset": "mg-modex-3.jpg",
+            "title": "GEAR POD™",
+            "sub": "Organiza tu equipo.",
+            "text": "Módulo para reunir implementos y accesorios de entrenamiento, como grips, muñequeras y sogas."
+          }
+        },
+        "m-7": {
+          "type": "pod",
+          "settings": {
+            "asset": "mg-modex-4.jpg",
+            "title": "CARGO POD™",
+            "sub": "Expande tu capacidad.",
+            "text": "Módulo de carga para separar calzado, ropa u otros accesorios."
+          }
+        }
+      },
+      "block_order": [
+        "m-1",
+        "m-2",
+        "m-3",
+        "m-4",
+        "m-5",
+        "m-6",
+        "m-7"
+      ]
+    },
+    "ficha": {
+      "type": "mg-columns",
+      "settings": {
+        "anchor": "ficha",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "table",
+          "settings": {
+            "column": "1",
+            "title": "Ficha técnica",
+            "big_title": true,
+            "rows": "Marca y modelo|Monkey Grip Travel Bag\nSistema modular|MODEX™ Modular Expansion System\nMódulos incluidos|QUICK POD, GEAR POD y CARGO POD\nCapacidad base declarada|50 L\nCapacidad expandida declarada|Hasta 60 L\nDimensiones declaradas|50 × 30 × 26 cm (alto × ancho × profundidad)\nPeso declarado|1.8 lb, sin accesorios\nMaterial exterior|Lona tipo huracán repelente al agua\nMalla|Tipo cáñamo con apresto\nForro|Lona tipo seda\nCremalleras|Militares\nHebillas|Policarbonato inyectado\nReatas|Multifilamento\nColores|Verde, gris, negro y morado\nPrecio|$460.000 COP + envío, incluidos los tres pods\nGarantía|6 meses"
+          }
+        },
+        "c-2": {
+          "type": "list",
+          "settings": {
+            "column": "2",
+            "title": "Usos",
+            "big_title": false,
+            "numbered": false,
+            "items": "Entrenamiento: organiza tus implementos y prendas.\nViajes: distribuye tus pertenencias por función.\nTrabajo y vida diaria: reúne lo que necesitas durante la jornada.\nExploración: organiza equipo personal según tu actividad."
+          }
+        },
+        "c-3": {
+          "type": "text",
+          "settings": {
+            "column": "2",
+            "title": "Cuidados recomendados",
+            "big_title": false,
+            "text": "<p>Retira el contenido antes de limpiar. Usa un paño suave húmedo y jabón neutro; elimina residuos y deja secar a la sombra en un lugar ventilado antes de guardar. Evita cloro, solventes, abrasivos, calor directo y guardar la maleta húmeda. No fuerces cremalleras ni hebillas.</p><p>Estas son recomendaciones de conservación, no condiciones adicionales de garantía.</p>"
+          }
+        },
+        "c-4": {
+          "type": "text",
+          "settings": {
+            "column": "2",
+            "title": "Garantía de 6 meses",
+            "big_title": false,
+            "text": "<p>La atención se realiza a través del canal oficial de Monkey Grip.</p>"
+          }
+        },
+        "c-5": {
+          "type": "contact",
+          "settings": {
+            "column": "2",
+            "title": "",
+            "big_title": false,
+            "message": "Hola Monkey Grip, tengo una consulta sobre la garantía de mi Travel Bag."
+          }
+        }
+      },
+      "block_order": [
+        "c-1",
+        "c-2",
+        "c-3",
+        "c-4",
+        "c-5"
+      ]
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "También te puede gustar",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "modex",
+    "ficha",
+    "related-products"
+  ]
+}
