@@ -35,6 +35,11 @@ if (!customElements.get('media-gallery')) {
         if (!activeMedia) {
           return;
         }
+        // Monkey Grip: elegir talla no cambia la foto; en ese caso la página no debe saltar hacia la galería.
+        const previousMediaId =
+          this.mgActiveMediaId ?? this.elements.viewer.querySelector('[data-media-id].is-active')?.dataset.mediaId;
+        const sameMedia = previousMediaId === activeMedia.dataset.mediaId;
+        this.mgActiveMediaId = activeMedia.dataset.mediaId;
         this.elements.viewer.querySelectorAll('[data-media-id]').forEach((element) => {
           element.classList.remove('is-active');
         });
@@ -56,6 +61,7 @@ if (!customElements.get('media-gallery')) {
           if (!this.mql.matches || this.elements.thumbnails) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
           }
+          if (sameMedia) return;
           const activeMediaRect = activeMedia.getBoundingClientRect();
           // Don't scroll if the image is already in view
           if (activeMediaRect.top > -0.5) return;
